@@ -1,51 +1,50 @@
 #include "LibPaths.h"
 #include "WindowManager.h"
 
-WindowManager::WindowManager(Rml::Context* context)
+WindowManager::WindowManager(std::string name)
 {
-    this->context = context;
+    this->name = name;
 };
 
-// Загрузить страницу
-Rml::ElementDocument* WindowManager::AddWindow(const fs::path path)  
+WindowManager::~WindowManager()
 {
-    Rml::ElementDocument* window = this->context->LoadDocument(path.string());
-    this->windows[path] = window;
-    if (window) {
-        window->Hide();
-    }
-    return window;
-}
+    for(std::map<const std::string, Window*>::iterator window = this->windows.begin(); window != this->windows.end();)
+    {
+        window->second->Close();
+        delete window->second;
+        windows.erase(window);
+    };
+};
 
-Rml::ElementDocument* WindowManager::GetWindow(const fs::path path) 
+// Добавить окно
+void WindowManager::Add(Window* window)  
 {
-    return this->windows[path];
-}
+    this->windows[window->GetTitle()] = window;
+};
 
-// Отобразить страницу
-void WindowManager::ShowWindow(const fs::path path) 
+// Получить форму
+Window* WindowManager::Get(const std::string& name) 
 {
-    auto it = this->windows.find(path);
-    if (it != this->windows.end()) {
-        it->second->Show();
-    }
-}
-
-// Скрыть страницу
-void WindowManager::HideWindow(const fs::path path) 
-{
-    auto it = this->windows.find(path);
-    if (it != this->windows.end()) {
-        it->second->Hide();
+    std::map<const std::string, Window*>::const_iterator window = this->windows.find(name);
+    if (window != this->windows.end()) 
+    {
+        return window->second;
     }
 }
 
-// Закрыть страницу
-void WindowManager::CloseWindow(const fs::path path)
+// Удалить форму
+void WindowManager::Remove(const std::string& name) 
 {
-    auto it = this->windows.find(path);
-    if (it != this->windows.end()) {
-        it->second->Close();
-        this->windows.erase(it);
+    std::map<const std::string, Window*>::iterator window = this->windows.find(name);
+    if (window != this->windows.end()) 
+    {
+        window->second->Close();
+        delete window->second;
+        this->windows.erase(window);
     }
 }
+
+std::string WindowManager::GetName() 
+{
+    return name;
+};

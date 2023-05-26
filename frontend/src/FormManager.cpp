@@ -1,51 +1,51 @@
 #include <LibPaths.h>
 #include <FormManager.h>
 
-FormManager::FormManager(Rml::Context* context)
+FormManager::FormManager(std::string name)
 {
-    this->context = context;
+    this->name = name;
 };
 
-// Загрузить страницу
-Rml::ElementDocument* FormManager::AddForm(const fs::path path)  
+FormManager::~FormManager()
 {
-    Rml::ElementDocument* form = this->context->LoadDocument(path.string());
-    this->forms[path] = form;
-    if (form) {
-        form->Hide();
+    for(std::map<const std::string, Form*>::iterator form = this->forms.begin(); form != this->forms.end();)
+    {
+        form->second->Close();
+        delete form->second;
+        forms.erase(form);
     }
-    return form;
+};
+
+
+// Добавить форму
+void FormManager::Add(Form* form)  
+{
+    this->forms[form->GetTitle()] = form;
 }
 
-Rml::ElementDocument* FormManager::GetForm(const fs::path path) 
+// Получить форму
+Form* FormManager::Get(const std::string& name) 
 {
-    return this->forms[path];
-}
-
-// Отобразить страницу
-void FormManager::ShowForm(const fs::path path) 
-{
-    auto it = this->forms.find(path);
-    if (it != this->forms.end()) {
-        it->second->Show();
-    }
-}
-
-// Скрыть страницу
-void FormManager::HideForm(const fs::path path) 
-{
-    auto it = this->forms.find(path);
-    if (it != this->forms.end()) {
-        it->second->Hide();
+    std::map<const std::string, Form*>::const_iterator form = this->forms.find(name);
+    if (form != this->forms.end()) 
+    {
+        return form->second;
     }
 }
 
-// Закрыть страницу
-void FormManager::CloseForm(const fs::path path) 
+// Удалить форму
+void FormManager::Remove(const std::string& name) 
 {
-    auto it = this->forms.find(path);
-    if (it != this->forms.end()) {
-        it->second->Close();
-        this->forms.erase(it);
+    std::map<const std::string, Form*>::iterator form = this->forms.find(name);
+    if (form != this->forms.end()) 
+    {
+        form->second->Close();
+        delete form->second;
+        this->forms.erase(form);
     }
 }
+
+std::string FormManager::GetName() 
+{
+    return name;
+};

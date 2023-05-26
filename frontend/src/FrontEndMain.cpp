@@ -105,11 +105,11 @@ int FrontendMain()
     Rml::Debugger::Initialise(context);
 	
 	WindowManager* windowManager = new WindowManager(context);
-	Rml::ElementDocument* mainwindow = windowManager->AddWindow(UIPATH / fs::path("MainMenu.rml"));
+	Rml::ElementDocument* mainwindow = windowManager->Add(UIPATH / fs::path("MainMenu.rml"));
 	FormManager* formManager = new FormManager(context);
-	Rml::ElementDocument* mainform = formManager->AddForm(UIPATH / fs::path("Settings.rml"));
-	Rml::ElementDocument* mainform2 = formManager->AddForm(UIPATH / fs::path("Test.rml"));
-	Rml::ElementDocument* mainform3 = formManager->AddForm(UIPATH / fs::path("Test2.rml"));
+	Rml::ElementDocument* mainform = formManager->Add(UIPATH / fs::path("Settings.rml"));
+	Rml::ElementDocument* mainform2 = formManager->Add(UIPATH / fs::path("Test.rml"));
+	Rml::ElementDocument* mainform3 = formManager->Add(UIPATH / fs::path("Test2.rml"));
 
 	// получаем все элементы img в документе
 	Rml::ElementList imgElements;
@@ -145,5 +145,4 @@ int FrontendMain()
     Rml::Shutdown();
     Backend::Shutdown();
     return 0;
-
 }

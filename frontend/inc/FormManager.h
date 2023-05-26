@@ -1,21 +1,18 @@
-#include <RmlUi/Debugger.h>
-#include <RmlUi/Core.h>
-#include <map>
-#include <string>
-#include "LibPaths.h"
-
+#include "Form.h"
 
 class FormManager
 {
     private:
-        Rml::Context* context;
-        std::map<const fs::path, Rml::ElementDocument*> forms;
+        std::string name;
+        std::map<std::string, Form*> forms;
+
     public:
-        FormManager(Rml::Context* context);
-        Rml::ElementDocument* AddForm(const fs::path path);
-        Rml::ElementDocument* GetForm(const fs::path path);
-        void ShowForm(const fs::path path);
-        void HideForm(const fs::path path);
-        void CloseForm(const fs::path path);
+        FormManager(std::string name);
+        ~FormManager();
+
+        void Add(Form* form);
+        Form* Get(const std::string& path);
+        void Remove(const std::string& path); 
         
+        std::string GetName();
 };
