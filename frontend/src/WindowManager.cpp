@@ -1,6 +1,6 @@
 #include "WindowManager.h"
 
-WindowManager::WindowManager(std::string name)
+WindowManager::WindowManager(const std::string& name)
 {
     this->name = name;
 };
@@ -9,7 +9,6 @@ WindowManager::~WindowManager()
 {
     for(std::map<const std::string, Window*>::iterator window = this->windows.begin(); window != this->windows.end();)
     {
-        window->second->Close();
         delete window->second;
         windows.erase(window);
     };
@@ -18,7 +17,7 @@ WindowManager::~WindowManager()
 // Добавить окно
 void WindowManager::Add(Window* window)  
 {
-    this->windows[window->GetTitle()] = window;
+    this->windows[window->GetName()] = window;
 };
 
 // Получить форму
@@ -37,7 +36,6 @@ void WindowManager::Remove(const std::string& name)
     std::map<const std::string, Window*>::iterator window = this->windows.find(name);
     if (window != this->windows.end()) 
     {
-        window->second->Close();
         delete window->second;
         this->windows.erase(window);
     }

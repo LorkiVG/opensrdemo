@@ -1,7 +1,7 @@
 #include <modules/inc/FilePaths.h>
 #include <FormManager.h>
 
-FormManager::FormManager(std::string name)
+FormManager::FormManager(const std::string& name)
 {
     this->name = name;
 };

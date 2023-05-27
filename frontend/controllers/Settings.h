@@ -1,6 +1,4 @@
-#include <string>
-#include <memory>
-#include "Controller.h"
+#include "controllers/Controller.h"
 
 class SettingsController : public BaseController {
 public:

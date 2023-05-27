@@ -1,5 +1,11 @@
 #pragma once
 #include "Router.h"
+#include "modules/inc/LOG.h"
+#include "WindowManager.h"
+#include "FormManager.h"
+#include "FrontEndMain.h"
+#include "ContextManager.h"
+#include "RouterManager.h"
 
 class RouterManager
 {
@@ -8,7 +14,7 @@ class RouterManager
         std::map<std::string, Router*> routers;
 
     public:
-        RouterManager(std::string name);
+        RouterManager(const std::string& name);
         ~RouterManager();
 
         void Add(Router* router);

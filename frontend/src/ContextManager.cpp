@@ -1,5 +1,10 @@
 #include "ContextManager.h"
 
+ContextManager::ContextManager(const std::string& name) 
+{
+    this->name = name;
+}
+
 ContextManager::~ContextManager()
 {
     for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
@@ -14,7 +19,7 @@ void ContextManager::Add(Context* context)
     this->contexts[context->GetName()] = context;
 };
 
-Context* ContextManager::Get(const std::string name) const
+Context* ContextManager::Get(const std::string& name) const
 {
     std::map<const std::string, Context*>::const_iterator context = this->contexts.find(name);
     if (context != this->contexts.end()) 
@@ -22,7 +27,7 @@ Context* ContextManager::Get(const std::string name) const
         return context->second;
     }
 };
-void ContextManager::Remove(const std::string name)
+void ContextManager::Remove(const std::string& name)
 {
     std::map<const std::string, Context*>::iterator context = this->contexts.find(name);
     if (context != this->contexts.end()) 

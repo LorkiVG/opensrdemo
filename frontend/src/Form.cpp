@@ -1,6 +1,6 @@
 #include "Form.h"
 
-Form::Form(const std::string& tag) : ElementDocument(tag)
+Form::Form(const std::string& tag) : View(tag)
 {
-    this->Hide();
+    
 };

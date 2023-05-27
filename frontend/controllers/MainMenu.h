@@ -1,7 +1,7 @@
 #include <string>
 #include <memory>
 #include "WindowManager.h"
-#include "Controller.h"
+#include "controllers/Controller.h"
 
 
 class MainMenuController : public BaseController {

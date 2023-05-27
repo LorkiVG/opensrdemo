@@ -8,7 +8,7 @@ class FormManager
         std::map<std::string, Form*> forms;
 
     public:
-        FormManager(std::string name);
+        FormManager(const std::string& name);
         ~FormManager();
 
         void Add(Form* form);

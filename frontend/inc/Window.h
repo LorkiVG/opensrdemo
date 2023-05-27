@@ -1,12 +1,18 @@
 #pragma once
-#include <RmlUi/Debugger.h>
-#include <RmlUi/Core.h>
-#include <map>
-#include <string>
-#include "modules/inc/FilePaths.h"
+#include "View.h"
 
-class Window : public Rml::ElementDocument 
+class Window
 {
-    using Rml::ElementDocument::ElementDocument;
-    Window(const std::string& tag);
+    private:
+        std::string name;
+        View* currentview;
+
+    public:
+        View* getCurrentView() const;
+        void setCurrentView(View* view);
+
+        Window(const std::string& name);
+        ~Window();
+
+        std::string GetName() const;
 };

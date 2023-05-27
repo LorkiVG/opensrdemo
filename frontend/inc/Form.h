@@ -1,12 +1,9 @@
 #pragma once
-#include <RmlUi/Debugger.h>
-#include <RmlUi/Core.h>
-#include <map>
-#include <string>
-#include "modules/inc/FilePaths.h"
+#include "View.h"
 
-class Form : public Rml::ElementDocument 
+class Form : public View
 {
-    using Rml::ElementDocument::ElementDocument;
-    Form(const std::string& tag);
+    public:
+        using View::View;
+        Form(const std::string& tag);
 };

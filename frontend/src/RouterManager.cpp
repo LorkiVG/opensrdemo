@@ -1,9 +1,9 @@
 #include "RouterManager.h"
 
 
-RouterManager::RouterManager(std::string name)
+RouterManager::RouterManager(const std::string& name)
 {
-    
+    this->name = name;
 }
 
 RouterManager::~RouterManager()

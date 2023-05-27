@@ -1,11 +1,11 @@
 #pragma once
 #include <map>
 #include <memory>
-#include "Controller.h"
-#include "windows/MainMenu.h"
-#include "windows/Galaxy.h"
-#include "windows/Preloader.h"
-#include "forms/Settings.h"
+#include "controllers/Controller.h"
+#include "controllers/MainMenu.h"
+#include "controllers/Galaxy.h"
+#include "controllers/Preloader.h"
+#include "controllers/Settings.h"
 class Router {
     private:
         std::string name;

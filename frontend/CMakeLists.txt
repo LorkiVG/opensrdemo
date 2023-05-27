@@ -122,7 +122,7 @@ target_include_directories(frontend PUBLIC ${FREETYPE_INCLUDE_DIRS})
 target_include_directories(frontend PUBLIC ${SDL2_INCLUDE_DIR})
 target_include_directories(frontend PUBLIC ${RmlUiIncludePath})
 target_include_directories(frontend PUBLIC ${RmlUiBackendsPath})
-target_include_directories(frontend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/controllers)
+target_include_directories(frontend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(frontend ${RML_DEBUGGER_LIBRARY})
 target_link_libraries(frontend ${RML_CORE_LIBRARY})
