@@ -20,7 +20,7 @@ target_sources(Graphics PUBLIC
     ${LibGraphics_SOURCES}
 )
 
-target_include_directories(Graphics PUBLIC inc/modules)
+target_include_directories(Graphics PUBLIC inc)
 
 #TODO Написать нормальный поиск библиотеки RmlUI
 set(RmlUiDir "" CACHE STRING "Укажите путь к вашей директории библиотеки RmlUI(например RmlUi) относительно указаного пути в LibraryDir - Specify path to the directory with RmlUi library relative to LibraryDir (e. g. RmlUi)")

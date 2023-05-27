@@ -8,7 +8,11 @@ RouterManager::RouterManager(std::string name)
 
 RouterManager::~RouterManager()
 {
-    
+    for(std::map<const std::string, Router*>::iterator router = this->routers.begin(); router != this->routers.end();)
+    {
+        delete router->second;
+        routers.erase(router);
+    };
 }
 
 void RouterManager::Add(Router* window)

@@ -1,8 +1,6 @@
 #include <string>
 #include <fstream>
 #include <boost/filesystem.hpp>
-#include "FrontEndMain.h"
-
 
 namespace fs = boost::filesystem;
 using namespace std;
