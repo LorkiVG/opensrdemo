@@ -1,4 +1,4 @@
-#include <LibLOG.h>
+#include <LOG.h>
 
 LogFile::LogFile(fs::path path)
 {

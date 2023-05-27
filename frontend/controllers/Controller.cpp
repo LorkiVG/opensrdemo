@@ -6,7 +6,4 @@ std::unique_ptr<BaseController> BaseControllerFactory::Create()
     return std::make_unique<BaseController>();
 };
 
-namespace BaseControllerValidator 
-{
-    bool MainValidator(const std::string& input);
-};
+BaseControllerValidator::~BaseControllerValidator() = default;

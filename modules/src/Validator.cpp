@@ -1,4 +1,4 @@
-#include "LibValidator.h"
+#include "Validator.h"
 
 Validator::Validator(const std::string& pattern) {
     this->pattern = pattern;

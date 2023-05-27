@@ -1,7 +1,7 @@
 #include <RmlUi/Core.h>
 #include <string>
 #include <map>
-#include "LibPaths.h"
+#include "FrontEndMain.h"
 #include "FormManager.h"
 #include "WindowManager.h"
 

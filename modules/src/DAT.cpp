@@ -1,4 +1,4 @@
-#include <LibDAT.h>
+#include <DAT.h>
 
 //Инициализация
 void DATFile::Init(const DATFile& document) 

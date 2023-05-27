@@ -3,7 +3,7 @@
 #include <memory>
 #include <iostream>
 #include <boost/regex.hpp>
-#include "LibPaths.h"
+#include "FilePaths.h"
 
 
 // Базовый наследуемый класс для всех контроллеров
@@ -19,3 +19,7 @@ class BaseControllerFactory
         virtual std::unique_ptr<BaseController> Create();
 };
 
+class BaseControllerValidator {
+    public:
+        virtual ~BaseControllerValidator();
+};

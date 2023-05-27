@@ -1,4 +1,4 @@
-#include <LibPaths.h>
+#include <FilePaths.h>
 #include <FormManager.h>
 
 FormManager::FormManager(std::string name)

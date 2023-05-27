@@ -14,7 +14,8 @@ void Router::RemoveRoute(const fs::path path)
 std::unique_ptr<BaseController> Router::GetRoute(const fs::path path) 
 {
     auto it = factories.find(path);
-    if (it != factories.end()) {
+    if (it != factories.end()) 
+    {
         return it->second->Create();
     } 
     else 

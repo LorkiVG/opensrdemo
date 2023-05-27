@@ -2,7 +2,7 @@
 #include <RmlUi/Core.h>
 #include <map>
 #include <string>
-#include "LibPaths.h"
+#include "FilePaths.h"
 
 class Window : public Rml::ElementDocument 
 {

@@ -3,6 +3,6 @@
 #include <RmlUi_Backend.h>
 #include <SDL.h>
 #include <boost/algorithm/string/replace.hpp>
-#include "LibSettings.h"
+#include "ManageSettings.h"
 
 int FrontendMain();

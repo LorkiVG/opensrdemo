@@ -1,7 +1,7 @@
 #include <string>
 #include <fstream>
 #include <boost/filesystem.hpp>
-#include <LibPaths.h>
+#include "FrontEndMain.h"
 
 
 namespace fs = boost::filesystem;

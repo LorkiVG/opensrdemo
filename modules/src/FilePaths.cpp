@@ -1,9 +1,10 @@
-#include <LibPaths.h>
+#include <FilePaths.h>
 
 namespace fs = boost::filesystem;
 
 using namespace std;
 
+//TODO Переделать эти глобалки
 const fs::path MAINPATH = fs::canonical(".");
 const fs::path RESPATH = MAINPATH / fs::path("resources");
 const fs::path DATAPATH = RESPATH / fs::path("DATA");

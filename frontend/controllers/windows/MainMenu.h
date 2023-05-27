@@ -4,8 +4,6 @@
 #include "Controller.h"
 
 
-
-
 class MainMenuController : public BaseController {
     private:
         Rml::ElementDocument* window;

@@ -24,8 +24,3 @@ std::unique_ptr<BaseController> MainMenuControllerFactory::Create()
 {
     return std::make_unique<MainMenuController>();
 };
-
-bool MainMenuControllerValidator::ButtonsValidator(const std::string& input)
-{
-    
-};

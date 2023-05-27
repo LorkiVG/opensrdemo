@@ -1,7 +1,8 @@
-#include <LibLOG.h>
+#include <LOG.h>
 #include "WindowManager.h"
 #include "FormManager.h"
 #include "FrontEndMain.h"
+#include "ContextManager.h"
 
 bool ProcessKeyDownShortcuts(Rml::Context* context, Rml::Input::KeyIdentifier key, int key_modifier, float native_dp_ratio, bool priority)
 {
@@ -86,7 +87,16 @@ int FrontendMain()
 	
 
 	//Создаём контекстный менеджер, и создаём на нём один контекст
+	Context* context = (Context*)Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	ContextManager* contextManager = new ContextManager();
+	contextManager->Add(context);
+
 	
+	WindowManager* windowManager = new WindowManager("main");
+	FormManager* formManager = new FormManager("main");
+
+	context->AddWindowManager(windowManager);
+	context->AddFormManager(formManager);
 
     Rml::Context* context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
     if (!context)
