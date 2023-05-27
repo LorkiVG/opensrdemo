@@ -2,7 +2,7 @@
 #include <RmlUi/Core.h>
 #include <map>
 #include <string>
-#include "FilePaths.h"
+#include "modules/inc/FilePaths.h"
 
 class Form : public Rml::ElementDocument 
 {

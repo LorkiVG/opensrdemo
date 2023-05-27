@@ -3,7 +3,7 @@
 #include <memory>
 #include <iostream>
 #include <boost/regex.hpp>
-#include "FilePaths.h"
+#include "modules/inc/FilePaths.h"
 
 
 // Базовый наследуемый класс для всех контроллеров

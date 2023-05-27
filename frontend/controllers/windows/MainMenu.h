@@ -12,12 +12,7 @@ class MainMenuController : public BaseController {
         
 };
 
-
 class MainMenuControllerFactory : public BaseControllerFactory {
     public:
         std::unique_ptr<BaseController> Create() override;
-};
-
-namespace MainMenuControllerValidator {
-    bool ButtonsValidator(const std::string& input);
 };

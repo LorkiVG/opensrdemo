@@ -1,4 +1,4 @@
-#include "LibPaths.h"
+
 #include "WindowManager.h"
 
 WindowManager::WindowManager(std::string name)

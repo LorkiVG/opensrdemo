@@ -8,21 +8,21 @@ link_libraries(${Boost_LIBRARIES})
 
 #Библиотека для более удобной работы с графикой и цветами
 #TODO Занятся библиотекой в будущем
-add_library(LibGraphics STATIC src/modules/LibGraphics.cpp)
+add_library(Graphics STATIC src/modules/Graphics.cpp)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
 
-file(GLOB LibGraphics_SOURCES inc/modules/LibGraphics.cpp)
+file(GLOB LibGraphics_SOURCES inc/modules/Graphics.cpp)
 
-target_sources(LibGraphics PUBLIC
+target_sources(Graphics PUBLIC
     ${LibGraphics_SOURCES}
 )
 
-target_include_directories(LibGraphics PUBLIC inc/modules)
+target_include_directories(Graphics PUBLIC inc/modules)
+
 #TODO Написать нормальный поиск библиотеки RmlUI
-#Библиотека фронтенда
 set(RmlUiDir "" CACHE STRING "Укажите путь к вашей директории библиотеки RmlUI(например RmlUi) относительно указаного пути в LibraryDir - Specify path to the directory with RmlUi library relative to LibraryDir (e. g. RmlUi)")
 set(RmlUiPath ${LibraryDir}/${RmlUiDir})
 set(RmlUiBuildPath ${RmlUiPath}/Build)
@@ -88,8 +88,7 @@ file(GLOB RML_BACKEND_SOURCES Backends/*.cpp)
 
 
 
-message(${RML_DEBUGGER_LIBRARY})
-message(${RML_CORE_LIBRARY})
+# Создание фронтенд-бекенда
 target_link_libraries(rmlbackend ${RML_DEBUGGER_LIBRARY})
 target_link_libraries(rmlbackend ${RML_CORE_LIBRARY})
 target_link_libraries(rmlbackend ${SDL2_LIBRARIES})
@@ -110,21 +109,12 @@ target_sources(rmlbackend PUBLIC
 )
 
 
-
+# Создание самого фронтенда
 add_library(frontend STATIC src/FrontEndMain.cpp)
 file(GLOB FRONTEND_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
 file(GLOB FRONTEND_SOURCES_CONTROLLERS ${CMAKE_CURRENT_SOURCE_DIR}/controllers/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/controllers/*.c)
 file(GLOB FRONTEND_SOURCES_CONTROLLERS_WINDOWS ${CMAKE_CURRENT_SOURCE_DIR}/controllers/windows/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/controllers/windows/*.c)
 file(GLOB FRONTEND_SOURCES_CONTROLLERS_FORMS ${CMAKE_CURRENT_SOURCE_DIR}/controllers/forms/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/controllers/forms/*.c)
-message(
-    ${FRONTEND_SOURCES_CONTROLLERS}
-)
-message(
-    ${FRONTEND_SOURCES_CONTROLLERS_WINDOWS}
-
-)
-message(    ${FRONTEND_SOURCES_CONTROLLERS_FORMS})
-message(${FRONTEND_SOURCES})
 
 target_link_libraries(frontend ${FREETYPE_LIBRARY_RELEASE})
 target_include_directories(frontend PUBLIC ${FREETYPE_INCLUDE_DIRS})
@@ -144,8 +134,8 @@ target_link_libraries(frontend ${ZLIB_LIBRARIES})
 target_link_libraries(frontend rmlbackend)
 
 
-target_include_directories(frontend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/modules)
-target_link_libraries(frontend LibGraphics)
+target_include_directories(frontend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(frontend Graphics)
 
 target_sources(frontend PUBLIC
     ${FRONTEND_SOURCES}
@@ -157,5 +147,5 @@ target_compile_definitions(frontend PUBLIC RMLUI_STATIC_LIB)
 target_include_directories(frontend PUBLIC
     inc
     src/interface
-    ../modules/inc
+    ..
 )
