@@ -20,7 +20,7 @@ void Context::AddWindowManager(WindowManager* windowmanager)
     windowmanagers[windowmanager->GetName()] = windowmanager;
 };
 
-WindowManager* Context::GetWindowManager(const std::string name)
+WindowManager* Context::GetWindowManager(const std::string name) const
 {
     std::map<const std::string, WindowManager*>::const_iterator windowmanager = this->windowmanagers.find(name);
     if (windowmanager != this->windowmanagers.end()) 
@@ -45,7 +45,7 @@ void Context::AddFormManager(FormManager* formmanager)
     formmanagers[formmanager->GetName()] = formmanager;
 };
 
-FormManager* Context::GetFormManager(const std::string name)
+FormManager* Context::GetFormManager(const std::string name) const
 {
     std::map<const std::string, FormManager*>::const_iterator formmanager = this->formmanagers.find(name);
     if (formmanager != this->formmanagers.end()) 

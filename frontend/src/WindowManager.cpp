@@ -1,4 +1,3 @@
-
 #include "WindowManager.h"
 
 WindowManager::WindowManager(std::string name)
@@ -23,7 +22,7 @@ void WindowManager::Add(Window* window)
 };
 
 // Получить форму
-Window* WindowManager::Get(const std::string& name) 
+Window* WindowManager::Get(const std::string& name) const
 {
     std::map<const std::string, Window*>::const_iterator window = this->windows.find(name);
     if (window != this->windows.end()) 
@@ -44,7 +43,7 @@ void WindowManager::Remove(const std::string& name)
     }
 }
 
-std::string WindowManager::GetName() 
+std::string WindowManager::GetName() const
 {
-    return name;
+    return this->name;
 };

@@ -24,6 +24,11 @@ std::unique_ptr<BaseController> Router::GetRoute(const fs::path path)
     }        
 };
 
+std::string Router::GetName()
+{
+    return this->name;
+}
+
 namespace MainRouter
 {
     void Init()

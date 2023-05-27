@@ -31,3 +31,8 @@ void ContextManager::Remove(const std::string name)
         this->contexts.erase(context);
     }
 };
+
+std::string ContextManager::GetName() const
+{
+    return this->name;
+};

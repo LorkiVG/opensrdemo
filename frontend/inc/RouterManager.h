@@ -1,3 +1,4 @@
+#pragma once
 #include "Router.h"
 
 class RouterManager
@@ -10,10 +11,10 @@ class RouterManager
         RouterManager(std::string name);
         ~RouterManager();
 
-        void Add(Router* window);
-        Router* Get(const std::string& name);
+        void Add(Router* router);
+        Router* Get(const std::string& name) const;
         void Remove(const std::string& name);
         
-        std::string GetName();
+        std::string GetName() const;
 };
 

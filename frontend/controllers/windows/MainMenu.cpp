@@ -1,4 +1,4 @@
-#include <modules/inc/MainMenu.h>
+#include <MainMenu.h>
 
 class MainMainControllerEventHandler : public Rml::EventListener
 {

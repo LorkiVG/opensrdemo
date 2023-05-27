@@ -1,3 +1,4 @@
+#pragma once
 #include "Window.h"
 
 class WindowManager
@@ -11,8 +12,8 @@ class WindowManager
         ~WindowManager();
 
         void Add(Window* window);
-        Window* Get(const std::string& name);
+        Window* Get(const std::string& name) const;
         void Remove(const std::string& name);
         
-        std::string GetName();
+        std::string GetName() const;
 };

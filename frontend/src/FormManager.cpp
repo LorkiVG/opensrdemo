@@ -24,7 +24,7 @@ void FormManager::Add(Form* form)
 }
 
 // Получить форму
-Form* FormManager::Get(const std::string& name) 
+Form* FormManager::Get(const std::string& name) const
 {
     std::map<const std::string, Form*>::const_iterator form = this->forms.find(name);
     if (form != this->forms.end()) 
@@ -45,7 +45,7 @@ void FormManager::Remove(const std::string& name)
     }
 }
 
-std::string FormManager::GetName() 
+std::string FormManager::GetName() const
 {
-    return name;
+    return this->name;
 };

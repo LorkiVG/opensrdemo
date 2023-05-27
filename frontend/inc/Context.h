@@ -1,3 +1,4 @@
+#pragma once
 #include <RmlUi/Core.h>
 #include <string>
 #include <map>
@@ -15,10 +16,10 @@ class Context : public Rml::Context
     public:
         ~Context();
         void AddWindowManager(WindowManager* window_manager);
-        WindowManager* GetWindowManager(const std::string name);
+        WindowManager* GetWindowManager(const std::string name) const;
         void RemoveWindowManager(const std::string name);
 
         void AddFormManager(FormManager* form_manager);
-        FormManager* GetFormManager(const std::string name);
+        FormManager* GetFormManager(const std::string name) const;
         void RemoveFormManager(const std::string name);
 };

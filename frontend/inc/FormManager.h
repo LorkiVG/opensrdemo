@@ -1,3 +1,4 @@
+#pragma once
 #include "Form.h"
 
 class FormManager
@@ -11,8 +12,8 @@ class FormManager
         ~FormManager();
 
         void Add(Form* form);
-        Form* Get(const std::string& path);
+        Form* Get(const std::string& path) const;
         void Remove(const std::string& path); 
         
-        std::string GetName();
+        std::string GetName() const;
 };

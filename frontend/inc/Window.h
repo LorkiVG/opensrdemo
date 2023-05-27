@@ -1,3 +1,4 @@
+#pragma once
 #include <RmlUi/Debugger.h>
 #include <RmlUi/Core.h>
 #include <map>

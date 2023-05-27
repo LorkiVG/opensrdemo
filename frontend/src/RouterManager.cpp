@@ -15,22 +15,31 @@ RouterManager::~RouterManager()
     };
 }
 
-void RouterManager::Add(Router* window)
+void RouterManager::Add(Router* router)
 {
-    
+    this->routers[router->GetName()] = router;
 }
 
-Router* RouterManager::Get(const std::string& name)
+Router* RouterManager::Get(const std::string& name) const
 {
-    
+    std::map<const std::string, Router*>::const_iterator router = this->routers.find(name);
+    if (router != this->routers.end()) 
+    {
+        return router->second;
+    }
 }
 
 void RouterManager::Remove(const std::string& name)
 {
-    
+    std::map<const std::string, Router*>::iterator router = this->routers.find(name);
+    if (router != this->routers.end()) 
+    {
+        delete router->second;
+        this->routers.erase(router);
+    }
 }
 
-std::string RouterManager::GetName()
+std::string RouterManager::GetName() const
 {
-    
+    return this->name;
 }
