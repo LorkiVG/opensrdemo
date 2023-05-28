@@ -1,10 +1,16 @@
 #include "View.h"
 
-View::View(const std::string& tag) : ElementDocument(tag)
+View::View(const std::string& name)
 {
-    this->Hide();
+    this->name = name;
+    
 };
 
 View::~View()
 {
+}
+
+std::string View::GetName()
+{
+    return this->name;
 }

@@ -1,6 +1,6 @@
 #include "Form.h"
 
-Form::Form(const std::string& tag) : View(tag)
+Form::Form(const std::string& name) : View(name)
 {
     
 };

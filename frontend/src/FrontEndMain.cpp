@@ -94,17 +94,19 @@ int FrontendMain()
 	//!Внимание такой инит шрифта временный в будущем каждый контроллер будет иметь свой FontsManager
 	//TODO Сделать Fonts manager
 	//Загрузка основного шрифта
-    bool isfontloaded = Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
+    Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
 
 
 	//TODO Сделать класс для кеширования View
 	WindowManager* windowManager = new WindowManager("main");
 	context->AddWindowManager(windowManager);
-
 	Window* window = new Window("main");
 	windowManager->Add(window);
-	
-	View* view = new View("mainmenu", UIPATH / fs::path("MainMenu.rml"));
+	FormManager* formManager = new FormManager("main", context);
+
+
+
+	View* view = new View("mainmenu");
 	window->SetCurrentView(view);
 
 	// получаем все элементы img в документе
@@ -125,17 +127,13 @@ int FrontendMain()
     bool running = true;
     while (running)
     {
-		//Загружаем счётчик FPS, если в настройках включено его отображение
-        //running = Backend::ProcessEvents(context, ProcessKeyDownShortcuts, true);
 		contextManager->ProcessEventsAll(&running);
         contextManager->UpdateAll();
-
 		Backend::BeginFrame();
 		contextManager->RenderAll();
 		Backend::PresentFrame();
     }
 
-    
 	delete contextManager;
     Rml::Shutdown();
     Backend::Shutdown();

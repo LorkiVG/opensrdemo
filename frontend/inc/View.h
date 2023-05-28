@@ -2,15 +2,19 @@
 #include <RmlUi/Debugger.h>
 #include <RmlUi/Core.h>
 #include <map>
-#include <string>
 #include "modules/inc/FilePaths.h"
+#include <string>
+class Context; 
 
 class View
 {
     private:
+        std::string name;
+        Context* context;
         const Rml::ElementDocument* view;
     public:
-        using Rml::ElementDocument::ElementDocument;
-        View(const std::string& tag);
+        View(const std::string& name);
         ~View();
+
+        std::string GetName();
 };

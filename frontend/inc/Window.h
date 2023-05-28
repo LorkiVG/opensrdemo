@@ -1,11 +1,12 @@
 #pragma once
 #include "View.h"
+class WindowManager;
 
 class Window
 {
     private:
         std::string name;
-        Context* context;
+        WindowManager* windowManager;
         View* currentview;
 
     public:

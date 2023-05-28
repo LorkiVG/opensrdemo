@@ -14,6 +14,11 @@ WindowManager::~WindowManager()
     };
 };
 
+void WindowManager::SetContext(Context* context)
+{
+    this->context = context;
+}
+
 // Добавить окно
 void WindowManager::Add(Window* window)  
 {

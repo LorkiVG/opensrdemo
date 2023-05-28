@@ -5,10 +5,11 @@ class FormManager
 {
     private:
         std::string name;
+        Context* context;
         std::map<std::string, Form*> forms;
 
     public:
-        FormManager(const std::string& name);
+        FormManager(const std::string& name, Context* context);
         ~FormManager();
 
         void Add(Form* form);

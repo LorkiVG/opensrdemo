@@ -68,7 +68,7 @@ bool ProcessKeyDownShortcutsDefault(Rml::Context* context, Rml::Input::KeyIdenti
 }
 
 
-Context::Context(std::string name, int width, int height, KeyDownCallback keyDownCallback = nullptr, bool  )
+Context::Context(std::string name, int width, int height, KeyDownCallback keyDownCallback, bool powerSave)
 {
     this->context = Rml::CreateContext(name, Rml::Vector2i(width, height));
     if(keyDownCallback == nullptr)
@@ -79,19 +79,20 @@ Context::Context(std::string name, int width, int height, KeyDownCallback keyDow
     {
         this->SetKeyDownCallback(keyDownCallback);
     }
+	this->SetPowerSave(powerSave);
 }
 
 Context::~Context() 
 {
-    for(std::map<const std::string, FormManager*>::iterator formmanager = formmanagers.begin(); formmanager != formmanagers.end();)
+    for(std::map<const std::string, FormManager*>::iterator formmanager = formManagers.begin(); formmanager != formManagers.end();)
     {
         delete formmanager->second;
-        formmanagers.erase(formmanager);
+        formManagers.erase(formmanager);
     }
-    for(std::map<const std::string, WindowManager*>::iterator windowmanager = windowmanagers.begin(); windowmanager != windowmanagers.end();)
+    for(std::map<const std::string, WindowManager*>::iterator windowmanager = windowManagers.begin(); windowmanager != windowManagers.end();)
     {
         delete windowmanager->second;
-        windowmanagers.erase(windowmanager);
+        windowManagers.erase(windowmanager);
     }
 };
 
@@ -124,18 +125,29 @@ void Context::SetKeyDownCallback(KeyDownCallback keyDownCallback)
     this->keyDownCallback = keyDownCallback;
 }
 
+bool Context::GetPowerSave()
+{
+    return this->powerSave;
+}
+
+void Context::SetPowerSave(bool powerSave)
+{
+    this->powerSave = powerSave;
+}
+
 
 //Добавить менеджер окон - Add manager window
-void Context::AddWindowManager(WindowManager* windowmanager)
+void Context::AddWindowManager(WindowManager* windowManager)
 {
-    this->windowmanagers.insert(std::pair<const std::string, WindowManager*>(windowmanager->GetName(), windowmanager));
+    windowManager->SetContext(this);
+    this->windowManagers.insert(std::pair<const std::string, WindowManager*>(windowManager->GetName(), windowManager));
 }
 
 //Получить менеджер окон - Get manager window
 WindowManager* Context::GetWindowManager(const std::string name) const
 {
-    std::map<const std::string, WindowManager*>::const_iterator windowmanager = this->windowmanagers.find(name);
-    if (windowmanager != this->windowmanagers.end()) 
+    std::map<const std::string, WindowManager*>::const_iterator windowmanager = this->windowManagers.find(name);
+    if (windowmanager != this->windowManagers.end()) 
     {
         return windowmanager->second;
     }
@@ -148,26 +160,26 @@ WindowManager* Context::GetWindowManager(const std::string name) const
 //Удалить менеджер окон - Delete manager window
 void Context::RemoveWindowManager(const std::string name)
 {
-    std::map<const std::string, WindowManager*>::iterator windowmanager = this->windowmanagers.find(name);
-    if (windowmanager != this->windowmanagers.end()) 
+    std::map<const std::string, WindowManager*>::iterator windowmanager = this->windowManagers.find(name);
+    if (windowmanager != this->windowManagers.end()) 
     {
         delete windowmanager->second;
-        this->windowmanagers.erase(windowmanager);
+        this->windowManagers.erase(windowmanager);
     }
 };
 
 //Добавить менеджер форм - Add manager form
 void Context::AddFormManager(FormManager* formmanager)
 {
-    this->formmanagers.insert(std::pair<const std::string, FormManager*>(formmanager->GetName(), formmanager));
-    formmanagers[formmanager->GetName()] = formmanager;
+    this->formManagers.insert(std::pair<const std::string, FormManager*>(formmanager->GetName(), formmanager));
+    formManagers[formmanager->GetName()] = formmanager;
 };
 
 //Получить менеджер форм - Get manager form
 FormManager* Context::GetFormManager(const std::string name) const
 {
-    std::map<const std::string, FormManager*>::const_iterator formmanager = this->formmanagers.find(name);
-    if (formmanager != this->formmanagers.end()) 
+    std::map<const std::string, FormManager*>::const_iterator formmanager = this->formManagers.find(name);
+    if (formmanager != this->formManagers.end()) 
     {
         return formmanager->second;
     }
@@ -180,11 +192,11 @@ FormManager* Context::GetFormManager(const std::string name) const
 //Удалить менеджер форм - Delete manager form
 void Context::RemoveFormManager(const std::string name)
 {
-    std::map<const std::string, FormManager*>::iterator formmanager = this->formmanagers.find(name);
-    if (formmanager != this->formmanagers.end()) 
+    std::map<const std::string, FormManager*>::iterator formmanager = this->formManagers.find(name);
+    if (formmanager != this->formManagers.end()) 
     {
         delete formmanager->second;
-        this->formmanagers.erase(formmanager);
+        this->formManagers.erase(formmanager);
     }
 };
 

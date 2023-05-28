@@ -1,7 +1,7 @@
 #include <modules/inc/FilePaths.h>
 #include <FormManager.h>
 
-FormManager::FormManager(const std::string& name)
+FormManager::FormManager(const std::string& name, Context* context)
 {
     this->name = name;
 };
@@ -19,7 +19,7 @@ FormManager::~FormManager()
 // Добавить форму
 void FormManager::Add(Form* form)  
 {
-    this->forms[form->GetTitle()] = form;
+    this->forms[form->GetName()] = form;
 }
 
 // Получить форму
