@@ -27,6 +27,10 @@ Router* RouterManager::Get(const std::string& name) const
     {
         return router->second;
     }
+    else
+    {
+        return nullptr;
+    }
 }
 
 void RouterManager::Remove(const std::string& name)

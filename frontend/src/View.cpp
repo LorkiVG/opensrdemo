@@ -4,3 +4,7 @@ View::View(const std::string& tag) : ElementDocument(tag)
 {
     this->Hide();
 };
+
+View::~View()
+{
+}

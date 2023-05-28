@@ -20,10 +20,3 @@ class Router {
         std::string GetName();
 };
 
-
-//TODO Сделать нормальный RouterManager, то что ниже временно
-namespace MainRouter {
-    Router router;
-    void Init();
-}
-

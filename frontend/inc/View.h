@@ -10,4 +10,5 @@ class View : public Rml::ElementDocument
     public:
         using Rml::ElementDocument::ElementDocument;
         View(const std::string& tag);
+        ~View();
 };

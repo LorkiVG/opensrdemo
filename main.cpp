@@ -1,9 +1,7 @@
-#include <DAT.h>
-#include <iostream>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/path.hpp>
-#include <FrontEndMain.h>
-#include <SDL.h>
+#include "FrontEndMain.h"
+#include "modules/inc/DAT.h"
 
 namespace fs = boost::filesystem;
 

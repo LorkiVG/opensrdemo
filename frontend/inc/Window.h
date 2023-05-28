@@ -8,11 +8,10 @@ class Window
         View* currentview;
 
     public:
-        View* getCurrentView() const;
-        void setCurrentView(View* view);
-
         Window(const std::string& name);
-        ~Window();
+
+        View* GetCurrentView() const;
+        void SetCurrentView(View* view);
 
         std::string GetName() const;
 };

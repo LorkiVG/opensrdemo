@@ -10,7 +10,6 @@ FormManager::~FormManager()
 {
     for(std::map<const std::string, Form*>::iterator form = this->forms.begin(); form != this->forms.end();)
     {
-        form->second->Close();
         delete form->second;
         forms.erase(form);
     }
@@ -39,7 +38,6 @@ void FormManager::Remove(const std::string& name)
     std::map<const std::string, Form*>::iterator form = this->forms.find(name);
     if (form != this->forms.end()) 
     {
-        form->second->Close();
         delete form->second;
         this->forms.erase(form);
     }

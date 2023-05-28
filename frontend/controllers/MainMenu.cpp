@@ -15,10 +15,7 @@ public:
 
 void MainMenuController::Initialize(WindowManager* windowManager, const fs::path path) 
 {
-    this->window = windowManager->Add(path);
-    Rml::Element* element = ;
-    MainMainControllerEventHandler* handler = new MainMainControllerEventHandler();
-    mainwindow->AddEventListener(handler);
+
 };
 std::unique_ptr<BaseController> MainMenuControllerFactory::Create() 
 {

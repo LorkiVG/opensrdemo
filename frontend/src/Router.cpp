@@ -28,13 +28,3 @@ std::string Router::GetName()
 {
     return this->name;
 }
-
-namespace MainRouter
-{
-    void Init()
-    {
-        router.AddRoute(fs::path(UIPATH.string() + "MainMenu.rml"), std::make_unique<MainMenuControllerFactory>());
-        router.AddRoute(fs::path(UIPATH.string() + "Settings.rml"), std::make_unique<SettingsControllerFactory>());
-        router.AddRoute(fs::path(UIPATH.string() + "Preloader.rml"), std::make_unique<PreloaderControllerFactory>());
-    }
-}

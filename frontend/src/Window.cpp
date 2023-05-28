@@ -4,20 +4,14 @@ Window::Window(const std::string& name)
 {
     this->name = name;
     this->currentview = nullptr;
-
 }
 
-Window::~Window()
-{
-    
-}
-
-View* Window::getCurrentView() const
+View* Window::GetCurrentView() const
 {
     return this->currentview;
 }
 
-void Window::setCurrentView(View* view)
+void Window::SetCurrentView(View* view)
 {
     this->currentview = view;
 }

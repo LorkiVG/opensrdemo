@@ -1,6 +1,6 @@
 #include "Browser.h"
 
-void openBrowser(const std::string& url) {
+void OpenBrowser(const std::string& url) {
     std::string command;
     #ifdef _WIN32
         command = "start \"\" \"" + url + "\"";

@@ -5,7 +5,7 @@ class WindowManager
 {
     private:
         std::string name;
-        std::map<const std::string, Window*> windows;
+        std::map<std::string, Window*> windows;
 
     public:
         WindowManager(const std::string& name);

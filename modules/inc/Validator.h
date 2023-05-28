@@ -1,3 +1,4 @@
+#pragma once
 #include <regex>
 #include <string>
 #include <vector>
@@ -9,11 +10,10 @@ class Validator
 
     public:
         Validator(const std::string& pattern);
-        void setPattern(const std::string& pattern);
-        std::string getPattern() const;
+        void SetPattern(const std::string& pattern);
 
         bool Match(const std::string& input) const;
-        bool partialMatch(const std::string& input) const;
+        bool PartialMatch(const std::string& input) const;
 
-        std::vector<std::string> getMatches(std::string& input) const;
+        std::vector<std::string> GetMatches(std::string& input) const;
 };

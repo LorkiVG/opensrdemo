@@ -83,26 +83,18 @@ int FrontendMain()
 	
 
 	//Создаём контекстный менеджер, и создаём на нём один контекст
-	Context* context = (Context*)Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
 	ContextManager* contextManager = new ContextManager("main");
-	contextManager->Add(context);
-
-	
-	WindowManager* windowManager = new WindowManager("main");
-	FormManager* formManager = new FormManager("main");
-
-	context->AddWindowManager(windowManager);
-	context->AddFormManager(formManager);
-
-	MainMenuController* mainMenuController = new MainMenuController();
-
-    Rml::Context* context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
-    if (!context)
+	//FIXME Надо фиксить ступил
+	Context* context = (Context*)Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	if (!context)
 	{
 		Rml::Shutdown();
 		Backend::Shutdown();
 		return -1;
 	}
+
+	Rml::Debugger::Initialise(context);
+	contextManager->Add(context);
 
 	//TODO Сделать Fonts manager
 	//Загрузка основного шрифта
@@ -111,17 +103,19 @@ int FrontendMain()
 
 
     Rml::Debugger::Initialise(context);
+	//TODO Сделать класс для кеширования View
+	WindowManager* windowManager = new WindowManager("main");
+	context->AddWindowManager(windowManager);
+
+	Window* window = new Window("main");
+	windowManager->Add(window);
 	
-	WindowManager* windowManager = new WindowManager(context);
-	Rml::ElementDocument* mainwindow = windowManager->Add(UIPATH / fs::path("MainMenu.rml"));
-	FormManager* formManager = new FormManager(context);
-	Rml::ElementDocument* mainform = formManager->Add(UIPATH / fs::path("Settings.rml"));
-	Rml::ElementDocument* mainform2 = formManager->Add(UIPATH / fs::path("Test.rml"));
-	Rml::ElementDocument* mainform3 = formManager->Add(UIPATH / fs::path("Test2.rml"));
+	View* view = context->LoadDocument(UIPATH / fs::path("MainMenu.rml"));
+	window->SetCurrentView(view);
 
 	// получаем все элементы img в документе
 	Rml::ElementList imgElements;
-	mainwindow->GetElementsByTagName(imgElements, "img");
+	view->GetElementsByTagName(imgElements, "img");
 	for (auto& element : imgElements)
 	{
 		if (element->HasAttribute("src"))
@@ -132,10 +126,7 @@ int FrontendMain()
 			element->SetAttribute("src", srcAttribute);
 		}
 	}
-	mainwindow->Show();
-	mainform->Show();
-	mainform2->Show();
-	mainform3->Show();
+	view->Show();
 
     bool running = true;
     while (running)
@@ -149,7 +140,8 @@ int FrontendMain()
 		Backend::PresentFrame();
     }
 
-    context->UnloadAllDocuments();
+    
+	delete contextManager;
     Rml::Shutdown();
     Backend::Shutdown();
     return 0;

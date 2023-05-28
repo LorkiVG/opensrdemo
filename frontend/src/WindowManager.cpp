@@ -28,6 +28,10 @@ Window* WindowManager::Get(const std::string& name) const
     {
         return window->second;
     }
+    else
+    {
+        return nullptr;
+    }
 }
 
 // Удалить форму
