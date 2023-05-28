@@ -10,10 +10,14 @@ class ContextManager
     public:
         ContextManager(const std::string& name);
         ~ContextManager();
-
+    
         void Add(Context* context);
         Context* Get(const std::string& name) const;
         void Remove(const std::string& name);
         
         std::string GetName() const;
+
+        void ProcessEventsAll(bool* running);
+        void UpdateAll();
+        void RenderAll();
 };

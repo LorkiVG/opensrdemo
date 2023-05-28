@@ -5,8 +5,10 @@
 #include <string>
 #include "modules/inc/FilePaths.h"
 
-class View : public Rml::ElementDocument 
+class View
 {
+    private:
+        const Rml::ElementDocument* view;
     public:
         using Rml::ElementDocument::ElementDocument;
         View(const std::string& tag);

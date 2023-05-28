@@ -5,6 +5,7 @@ class Window
 {
     private:
         std::string name;
+        Context* context;
         View* currentview;
 
     public:

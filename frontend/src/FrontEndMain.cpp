@@ -72,37 +72,31 @@ int FrontendMain()
     int window_width = SETTINGS->GetProperty<int>("Resolution","GameResolutionX", 1024);
 	int window_height = SETTINGS->GetProperty<int>("Resolution","GameResolutionY", 768);
     SDL_SetMainReady();
-    SDL_Init(SDL_INIT_VIDEO);
 
-    //Инициализируем наш rmlui бекенд
+    //!Внимнание в будущем будет перестройка и создание фасада для работы с бекендом(например нужно чтоб удобно запускать на разных мониторах разные окна)
     bool isbackendinitialized  = Backend::Initialize("OpenSRDemo", window_width, window_height, 1, SETTINGS->GetProperty<bool>("Resolution","Fullscreen", false) );
     Rml::SetSystemInterface(Backend::GetSystemInterface());
 	Rml::SetRenderInterface(Backend::GetRenderInterface());
-
     Rml::Initialise();
-	
 
-	//Создаём контекстный менеджер, и создаём на нём один контекст
+	//Создаём контекстный менеджер
 	ContextManager* contextManager = new ContextManager("main");
-	//FIXME Надо фиксить ступил
-	Context* context = (Context*)Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
-	if (!context)
-	{
-		Rml::Shutdown();
-		Backend::Shutdown();
-		return -1;
-	}
-
-	Rml::Debugger::Initialise(context);
+	//И создаём на нём один контекст
+	Context* context = new Context("main", window_width, window_height, nullptr);
 	contextManager->Add(context);
 
+	//!Внимание такая инициализация дебагера временна
+	//TODO Переделать и сделать обёртку над дебаггером, и также в будущем избавится от Get так ка это противоречит инкапсуляции
+	//Инициализируеим дебагер
+	Rml::Debugger::Initialise(context->Get());
+	
+
+	//!Внимание такой инит шрифта временный в будущем каждый контроллер будет иметь свой FontsManager
 	//TODO Сделать Fonts manager
 	//Загрузка основного шрифта
     bool isfontloaded = Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
 
 
-
-    Rml::Debugger::Initialise(context);
 	//TODO Сделать класс для кеширования View
 	WindowManager* windowManager = new WindowManager("main");
 	context->AddWindowManager(windowManager);
@@ -110,11 +104,11 @@ int FrontendMain()
 	Window* window = new Window("main");
 	windowManager->Add(window);
 	
-	View* view = context->LoadDocument(UIPATH / fs::path("MainMenu.rml"));
+	View* view = new View("mainmenu", UIPATH / fs::path("MainMenu.rml"));
 	window->SetCurrentView(view);
 
 	// получаем все элементы img в документе
-	Rml::ElementList imgElements;
+	/*ml::ElementList imgElements;
 	view->GetElementsByTagName(imgElements, "img");
 	for (auto& element : imgElements)
 	{
@@ -125,18 +119,19 @@ int FrontendMain()
 			boost::replace_all(srcAttribute, "{DATAPATH}", DATAPATH.string());
 			element->SetAttribute("src", srcAttribute);
 		}
-	}
-	view->Show();
+	}*/
+	//view->Show();
 
     bool running = true;
     while (running)
     {
 		//Загружаем счётчик FPS, если в настройках включено его отображение
-        running = Backend::ProcessEvents(context, ProcessKeyDownShortcuts, true);
-        context->Update();
+        //running = Backend::ProcessEvents(context, ProcessKeyDownShortcuts, true);
+		contextManager->ProcessEventsAll(&running);
+        contextManager->UpdateAll();
 
 		Backend::BeginFrame();
-		context->Render();
+		contextManager->RenderAll();
 		Backend::PresentFrame();
     }
 

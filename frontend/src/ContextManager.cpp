@@ -46,3 +46,28 @@ std::string ContextManager::GetName() const
 {
     return this->name;
 };
+
+
+void ContextManager::ProcessEventsAll(bool* running)
+{
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    {
+        context->second->ProcessEvents(running);
+    }
+}
+
+void ContextManager::UpdateAll()
+{
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    {
+        context->second->Update();
+    }
+}
+
+void ContextManager::RenderAll()
+{
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    {
+        context->second->Render();
+    }
+}
