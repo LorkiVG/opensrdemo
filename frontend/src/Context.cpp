@@ -171,8 +171,8 @@ void Context::RemoveWindowManager(const std::string name)
 //Добавить менеджер форм - Add manager form
 void Context::AddFormManager(FormManager* formmanager)
 {
+    formmanager->SetContext(this);
     this->formManagers.insert(std::pair<const std::string, FormManager*>(formmanager->GetName(), formmanager));
-    formManagers[formmanager->GetName()] = formmanager;
 };
 
 //Получить менеджер форм - Get manager form

@@ -9,8 +9,11 @@ class FormManager
         std::map<std::string, Form*> forms;
 
     public:
-        FormManager(const std::string& name, Context* context);
+        FormManager(const std::string& name);
         ~FormManager();
+
+        void SetContext(Context* context);
+        Context* GetContext() const;
 
         void Add(Form* form);
         Form* Get(const std::string& path) const;

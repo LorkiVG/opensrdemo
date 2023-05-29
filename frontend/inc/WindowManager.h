@@ -13,6 +13,7 @@ class WindowManager
         ~WindowManager();
 
         void SetContext(Context* context);
+        Context* GetContext() const;
 
         void Add(Window* window);
         Window* Get(const std::string& name) const;

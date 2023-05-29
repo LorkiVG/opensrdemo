@@ -9,12 +9,17 @@ class Context;
 class View
 {
     private:
-        std::string name;
         Context* context;
-        const Rml::ElementDocument* view;
+    protected:
+        std::string name;
+        Rml::ElementDocument* view;
     public:
         View(const std::string& name);
         ~View();
+
+        void Load(fs::path);
+        void SetContext(Context* context);
+        Context* GetContext();
 
         std::string GetName();
 };

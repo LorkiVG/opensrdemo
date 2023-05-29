@@ -102,11 +102,9 @@ int FrontendMain()
 	context->AddWindowManager(windowManager);
 	Window* window = new Window("main");
 	windowManager->Add(window);
-	FormManager* formManager = new FormManager("main", context);
-
-
 
 	View* view = new View("mainmenu");
+	view->Load(fs::path(RESPATH / fs::path("mainmenu.rml")));
 	window->SetCurrentView(view);
 
 	// получаем все элементы img в документе

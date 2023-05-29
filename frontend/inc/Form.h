@@ -9,4 +9,6 @@ class Form : public View
     public:
         using View::View;
         Form(const std::string& name);
+
+        void Load(fs::path);
 };

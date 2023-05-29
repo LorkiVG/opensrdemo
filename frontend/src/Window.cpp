@@ -6,6 +6,11 @@ Window::Window(const std::string& name)
     this->currentview = nullptr;
 }
 
+void Window::SetWindowManager(WindowManager* windowManager)
+{
+    this->windowManager = windowManager;
+}
+
 View* Window::GetCurrentView() const
 {
     return this->currentview;
