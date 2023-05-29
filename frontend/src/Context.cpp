@@ -139,7 +139,7 @@ void Context::SetPowerSave(bool powerSave)
 //Добавить менеджер окон - Add manager window
 void Context::AddWindowManager(WindowManager* windowManager)
 {
-    windowManager->SetContext(this);
+    windowManager->context = this;
     this->windowManagers.insert(std::pair<const std::string, WindowManager*>(windowManager->GetName(), windowManager));
 }
 
@@ -171,7 +171,7 @@ void Context::RemoveWindowManager(const std::string name)
 //Добавить менеджер форм - Add manager form
 void Context::AddFormManager(FormManager* formmanager)
 {
-    formmanager->SetContext(this);
+    formmanager->context = this;
     this->formManagers.insert(std::pair<const std::string, FormManager*>(formmanager->GetName(), formmanager));
 };
 

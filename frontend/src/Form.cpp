@@ -9,3 +9,8 @@ void Form::Load(fs::path)
 {
     
 }
+
+std::string Form::GetName()
+{
+    return this->view->GetTitle();
+}

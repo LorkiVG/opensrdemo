@@ -15,16 +15,6 @@ FormManager::~FormManager()
     }
 };
 
-void FormManager::SetContext(Context* context)
-{
-    this->context = context;
-}
-
-Context* FormManager::GetContext() const
-{
-    return this->context;
-}
-
 // Добавить форму
 void FormManager::Add(Form* form)  
 {
@@ -38,6 +28,10 @@ Form* FormManager::Get(const std::string& name) const
     if (form != this->forms.end()) 
     {
         return form->second;
+    }
+    else
+    {
+        return nullptr;
     }
 }
 

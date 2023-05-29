@@ -11,4 +11,6 @@ class Form : public View
         Form(const std::string& name);
 
         void Load(fs::path);
+
+        std::string GetName();
 };

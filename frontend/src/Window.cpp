@@ -3,24 +3,39 @@
 Window::Window(const std::string& name)
 {
     this->name = name;
-    this->currentview = nullptr;
+    this->currentView = nullptr;
+    this->windowManager = nullptr;
 }
 
-void Window::SetWindowManager(WindowManager* windowManager)
-{
-    this->windowManager = windowManager;
-}
 
 View* Window::GetCurrentView() const
 {
-    return this->currentview;
+    return this->currentView;
 }
 
-void Window::SetCurrentView(View* view)
+
+void Window::SetCurrentView(View* view, bool autoClose)
 {
-    this->currentview = view;
+    if(autoClose && this->currentView != nullptr)
+    {
+        this->currentView->Close();
+    }
+    
+    if(this->windowManager != nullptr)
+    {
+        this->currentView = view;
+    }
+    else 
+    {
+
+    }
+   
 }
 
+Context* Window::GetContext()
+{
+    return this->context;
+}
 
 std::string Window::GetName() const
 {

@@ -2,8 +2,7 @@
 
 View::View(const std::string& name)
 {
-    this->name = name;
-    this->context = nullptr;
+    this->window = nullptr;
 };
 
 View::~View()
@@ -11,22 +10,13 @@ View::~View()
     this->view->Close();
 }
 
-std::string View::GetName()
-{
-    return this->name;
-}
 
-
-void View::SetContext(Context* context)
-{
-    this->context = context;
-}
-
-Context* View::GetContext()
-{
-    return this->context;
-}
-
+//Загрузка по файловому пути, загрузка происходит на контекст по установлему пути в context
 void View::Load(fs::path)
 {
+}
+
+void View::Close()
+{
+    this->view->Close();
 }

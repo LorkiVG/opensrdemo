@@ -5,25 +5,26 @@ class WindowManager;
 class Window
 {
     private:
+        //Имя окна
         std::string name;
-        Context* windowManager;
-
-        WindowManager* windowManager;
-
-        View* currentview;
+        //Если не задан windowManager то используется в качестве контекста
+        
+        //Текущий вид
+        View* currentView;
 
 
     public:
+        //Нужно для более удобного и быстрого общения с оконным менеджером если он установлен если нет то используется Context 
+        WindowManager* windowManager;
+        Context* context;
+
         Window(const std::string& name);
         
-        void Window::SetWindowManager(WindowManager* windowManager);
-
         View* GetCurrentView() const;
-        void SetCurrentView(View* view);
+        void SetCurrentView(View* view, bool autoClose = 0);
         
+        //Берёт контекст из Сщ
         Context* GetContext();
-        void SetContext(Context* context);
         
-
         std::string GetName() const;
 };

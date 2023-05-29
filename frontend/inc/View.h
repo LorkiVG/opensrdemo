@@ -4,22 +4,21 @@
 #include <map>
 #include "modules/inc/FilePaths.h"
 #include <string>
-class Context; 
+class Context;
+class Window;
 
 class View
 {
     private:
-        Context* context;
+        
     protected:
-        std::string name;
         Rml::ElementDocument* view;
     public:
+        Window* window;
+        
         View(const std::string& name);
         ~View();
 
         void Load(fs::path);
-        void SetContext(Context* context);
-        Context* GetContext();
-
-        std::string GetName();
+        void Close();
 };
