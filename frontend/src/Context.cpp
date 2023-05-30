@@ -112,7 +112,10 @@ void Context::UnloadAllDocuments()
 }
 
 
-
+Rml::ElementDocument* Context::LoadDocument(const std::string& path)
+{
+    return context->LoadDocument(path);
+}
 
 //KeyDown Events Callbacks
 KeyDownCallback Context::GetKeyDownCallback()

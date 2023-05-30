@@ -104,8 +104,9 @@ int FrontendMain()
 	windowManager->Add(window);
 
 	View* view = new View("mainmenu");
-	view->Load(fs::path(RESPATH / fs::path("mainmenu.rml")));
+	
 	window->SetCurrentView(view);
+	view->Load(fs::path(RESPATH / fs::path("mainmenu.rml")));
 
 	// получаем все элементы img в документе
 	/*ml::ElementList imgElements;

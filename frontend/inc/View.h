@@ -1,9 +1,10 @@
 #pragma once
 #include <RmlUi/Debugger.h>
 #include <RmlUi/Core.h>
+#include <string>
 #include <map>
 #include "modules/inc/FilePaths.h"
-#include <string>
+
 class Context;
 class Window;
 
@@ -14,11 +15,12 @@ class View
     protected:
         Rml::ElementDocument* view;
     public:
-        Window* window;
+        //Нужно для более удобного назначения
+        Context* context;
         
         View(const std::string& name);
         ~View();
 
-        void Load(fs::path);
+        void Load(std::string path);
         void Close();
 };

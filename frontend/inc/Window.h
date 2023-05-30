@@ -14,8 +14,6 @@ class Window
 
 
     public:
-        //Нужно для более удобного и быстрого общения с оконным менеджером если он установлен если нет то используется Context 
-        WindowManager* windowManager;
         Context* context;
 
         Window(const std::string& name);
@@ -23,7 +21,7 @@ class Window
         View* GetCurrentView() const;
         void SetCurrentView(View* view, bool autoClose = 0);
         
-        //Берёт контекст из Сщ
+        //Берёт контекст из Context или если задан менеджер использует контекст заданый в менеджере
         Context* GetContext();
         
         std::string GetName() const;

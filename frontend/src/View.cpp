@@ -2,7 +2,7 @@
 
 View::View(const std::string& name)
 {
-    this->window = nullptr;
+    this->context = nullptr;
 };
 
 View::~View()
@@ -11,9 +11,9 @@ View::~View()
 }
 
 
-//Загрузка по файловому пути, загрузка происходит на контекст по установлему пути в context
-void View::Load(fs::path)
+void View::Load(fs::path path)
 {
+    this->view = context->Load(path.string());
 }
 
 void View::Close()
