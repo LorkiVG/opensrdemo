@@ -1,7 +1,5 @@
 #pragma once
 #include "View.h"
-class WindowManager;
-
 class Window
 {
     private:
@@ -15,7 +13,6 @@ class Window
 
     public:
         Context* context;
-
         Window(const std::string& name);
         
         View* GetCurrentView() const;

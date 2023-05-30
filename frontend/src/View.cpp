@@ -1,4 +1,5 @@
 #include "View.h"
+#include "Context.h"
 
 View::View(const std::string& name)
 {
@@ -13,10 +14,11 @@ View::~View()
 
 void View::Load(fs::path path)
 {
-    this->view = context->Load(path.string());
+    this->view = this->context->LoadDocument(path);
 }
 
 void View::Close()
 {
     this->view->Close();
 }
+

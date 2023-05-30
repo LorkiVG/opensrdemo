@@ -18,6 +18,7 @@ FormManager::~FormManager()
 // Добавить форму
 void FormManager::Add(Form* form)  
 {
+    form->context = this->context;
     this->forms[form->GetName()] = form;
 }
 

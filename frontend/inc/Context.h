@@ -30,7 +30,7 @@ public:
 
     void UnloadAllDocuments();
 
-    Rml::ElementDocument* Context::LoadDocument(const std::string& path);
+    Rml::ElementDocument* LoadDocument(const fs::path& path);
 
     KeyDownCallback GetKeyDownCallback();
     void SetKeyDownCallback(KeyDownCallback keyDownCallback);

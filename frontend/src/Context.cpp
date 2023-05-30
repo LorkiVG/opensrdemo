@@ -1,4 +1,6 @@
 #include "Context.h"
+#include "FormManager.h"
+#include "WindowManager.h"
 
 bool ProcessKeyDownShortcutsDefault(Rml::Context* context, Rml::Input::KeyIdentifier key, int key_modifier, float native_dp_ratio, bool priority)
 {
@@ -112,9 +114,9 @@ void Context::UnloadAllDocuments()
 }
 
 
-Rml::ElementDocument* Context::LoadDocument(const std::string& path)
+Rml::ElementDocument* Context::LoadDocument(const fs::path& path)
 {
-    return context->LoadDocument(path);
+    return this->context->LoadDocument(path.string());
 }
 
 //KeyDown Events Callbacks

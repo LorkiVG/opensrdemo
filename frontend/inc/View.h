@@ -4,9 +4,7 @@
 #include <string>
 #include <map>
 #include "modules/inc/FilePaths.h"
-
 class Context;
-class Window;
 
 class View
 {
@@ -21,6 +19,6 @@ class View
         View(const std::string& name);
         ~View();
 
-        void Load(std::string path);
+        void Load(fs::path path);
         void Close();
 };
