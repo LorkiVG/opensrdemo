@@ -27,7 +27,7 @@ Context* WindowManager::GetContext()
 // Добавить окно
 void WindowManager::Add(Window* window)  
 {
-    window->SetContext(this->context);
+    window->SetManager(this);
     this->windows[window->GetName()] = window;
 };
 

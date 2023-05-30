@@ -18,7 +18,7 @@ void View::Load(fs::path path)
     Context* context = this->window->GetContext();
     if(context != nullptr)
     {
-        this->view = this->window->GetContext()->LoadDocument(path);
+        this->view = context->LoadDocument(path);
     }
 }
 

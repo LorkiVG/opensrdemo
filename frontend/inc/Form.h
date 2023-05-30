@@ -10,6 +10,8 @@ class Form : public View
         using View::View;
         Form(const std::string& name);
 
+        void SetManager(FormManager* manager);
+
         void Load(fs::path);
 
         std::string GetName();

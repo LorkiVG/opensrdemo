@@ -12,6 +12,7 @@ class Window
         View* currentView;
         Context* context;
         void SetContext(Context* context);
+        void SetManager(WindowManager* manager);
     public:
         Window(const std::string& name);
         ~Window();
@@ -21,6 +22,7 @@ class Window
         
         //Берёт контекст из Context или если задан менеджер использует контекст заданый в менеджере
         Context* GetContext();
+        WindowManager* GetManager();
         
         std::string GetName() const;
 

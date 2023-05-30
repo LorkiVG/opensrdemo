@@ -5,6 +5,7 @@ Window::Window(const std::string& name)
 {
     this->name = name;
     this->currentView = nullptr;
+    this->context = nullptr;
 }
 
 Window::~Window()
@@ -32,9 +33,14 @@ void Window::SetContext(Context* context)
     this->context = context;
 }
 
-void Window::SetContext(Context* context)
+WindowManager* Window::GetManager()
 {
-    this->context = context;
+    return this->manager;
+}
+
+void Window::SetManager(WindowManager* manager)
+{
+    this->manager = manager;
 }
 
 View* Window::GetCurrentView() const

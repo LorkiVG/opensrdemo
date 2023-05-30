@@ -15,10 +15,20 @@ FormManager::~FormManager()
     }
 };
 
+Context* FormManager::GetContext() const
+{
+    return this->context;
+}
+
+void FormManager::SetContext(Context* context)
+{
+    this->context = context;
+}
+
 // Добавить форму
 void FormManager::Add(Form* form)  
 {
-    form->context = this->context;
+    form->SetManager(this);
     this->forms[form->GetName()] = form;
 }
 

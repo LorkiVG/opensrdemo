@@ -1,9 +1,5 @@
 #pragma once
-#include <RmlUi/Core.h>
-#include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
-#include <string>
-#include <map>
 #include "modules/inc/LOG.h"
 #include "FormManager.h"
 #include "WindowManager.h"
