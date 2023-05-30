@@ -7,7 +7,7 @@ WindowManager::WindowManager(const std::string& name)
 
 WindowManager::~WindowManager()
 {
-    for(std::map<const std::string, Window*>::iterator window = this->windows.begin(); window != this->windows.end();)
+    for(std::map<const std::string, Window*>::iterator window = this->windows.begin(); window != this->windows.end(); ++window)
     {
         delete window->second;
         windows.erase(window);
@@ -45,6 +45,7 @@ Window* WindowManager::Get(const std::string& name) const
     }
 }
 
+//Вырезать окно - Cut window
 Window* WindowManager::Cut(const std::string& name)
 {
     std::map<const std::string, Window*>::iterator window = this->windows.find(name);

@@ -8,7 +8,7 @@ FormManager::FormManager(const std::string&)
 
 FormManager::~FormManager()
 {
-    for(std::map<const std::string, Form*>::iterator form = this->forms.begin(); form != this->forms.end();)
+    for(std::map<const std::string, Form*>::iterator form = this->forms.begin(); form != this->forms.end(); ++form)
     {
         delete form->second;
         forms.erase(form);

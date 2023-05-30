@@ -7,7 +7,7 @@ ContextManager::ContextManager(const std::string& name)
 
 ContextManager::~ContextManager()
 {
-    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end(); ++context)
     {
         
         delete context->second;
@@ -50,15 +50,17 @@ std::string ContextManager::GetName() const
 
 void ContextManager::ProcessEventsAll(bool* running)
 {
-    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    MAINLOG->WriteStr(to_string(this->contexts.size()),"\n");
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end(); ++context)
     {
+        
         context->second->ProcessEvents(running);
     }
 }
 
 void ContextManager::UpdateAll()
 {
-    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end(); ++context)
     {
         context->second->Update();
     }
@@ -66,7 +68,7 @@ void ContextManager::UpdateAll()
 
 void ContextManager::RenderAll()
 {
-    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
+    for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end(); ++context)
     {
         context->second->Render();
     }

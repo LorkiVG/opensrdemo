@@ -5,6 +5,7 @@ class FormManager;
 class Form : public View
 {
     private:
+        std::string name;
         FormManager* manager;
     public:
         using View::View;

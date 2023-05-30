@@ -103,13 +103,22 @@ int FrontendMain()
 	Window* window = new Window("main");
 	windowManager->Add(window);
 
+	FormManager* formManager = new FormManager("main");
+	context->AddFormManager(formManager);
+	Form* form = new Form("main");
+	formManager->Add(form);
+	Form* form2 = new Form("main2");
+	formManager->Add(form2);
+	Form* form3 = new Form("main3");
+	formManager->Add(form3);
+
 	View* view = new View("mainmenu");
 	
 	window->SetCurrentView(view);
-	view->Load(fs::path(RESPATH / fs::path("mainmenu.rml")));
+	view->Load(fs::path(UIPATH / fs::path("mainmenu.rml")));
 
 	// получаем все элементы img в документе
-	/*ml::ElementList imgElements;
+	Rml::ElementList imgElements;
 	view->GetElementsByTagName(imgElements, "img");
 	for (auto& element : imgElements)
 	{
@@ -120,9 +129,15 @@ int FrontendMain()
 			boost::replace_all(srcAttribute, "{DATAPATH}", DATAPATH.string());
 			element->SetAttribute("src", srcAttribute);
 		}
-	}*/
-	//view->Show();
+	}
+	form->Load(fs::path(UIPATH / fs::path("Settings.rml")));
+	form2->Load(fs::path(UIPATH / fs::path("Test.rml")));
+	form3->Load(fs::path(UIPATH / fs::path("Test2.rml")));
 
+	view->Show();
+	form->Show();
+	form2->Show();
+	form3->Show();
     bool running = true;
     while (running)
     {

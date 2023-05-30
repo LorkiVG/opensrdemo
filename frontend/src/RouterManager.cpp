@@ -8,7 +8,7 @@ RouterManager::RouterManager(const std::string& name)
 
 RouterManager::~RouterManager()
 {
-    for(std::map<const std::string, Router*>::iterator router = this->routers.begin(); router != this->routers.end();)
+    for(std::map<const std::string, Router*>::iterator router = this->routers.begin(); router != this->routers.end(); ++router)
     {
         delete router->second;
         routers.erase(router);

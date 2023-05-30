@@ -86,12 +86,12 @@ Context::Context(std::string name, int width, int height, KeyDownCallback keyDow
 
 Context::~Context() 
 {
-    for(std::map<const std::string, FormManager*>::iterator formmanager = formManagers.begin(); formmanager != formManagers.end();)
+    for(std::map<const std::string, FormManager*>::iterator formmanager = formManagers.begin(); formmanager != formManagers.end(); ++formmanager)
     {
         delete formmanager->second;
         formManagers.erase(formmanager);
     }
-    for(std::map<const std::string, WindowManager*>::iterator windowmanager = windowManagers.begin(); windowmanager != windowManagers.end();)
+    for(std::map<const std::string, WindowManager*>::iterator windowmanager = windowManagers.begin(); windowmanager != windowManagers.end(); ++windowmanager)
     {
         delete windowmanager->second;
         windowManagers.erase(windowmanager);
@@ -161,7 +161,7 @@ Window* Context::GetWindow(const std::string name) const
 }
 
 //Вырезать окно - Cut window
-//Внимание при подобной отвязке окна, его требуется привязать сразу куда-то иначе его View будет проигрыватся на старом контексте - Attention when unlinking a window like this, it must be linked to somewhere immediately, otherwise its View will be played on the old context
+//Внимание при подобной отвязке окна, его требуется привязать сразу куда-то иначе его View будет отображаться на старом контексте - Attention when unlinking a window like this, it must be linked somewhere immediately otherwise its View will be displayed on the old context
 Window* Context::CutWindow(const std::string name)
 {
     std::map<const std::string, Window*>::iterator window = this->windows.find(name);
@@ -174,7 +174,6 @@ Window* Context::CutWindow(const std::string name)
     {
         return nullptr;
     }
-    
 }
 
 //Удалить окно - Delete window
@@ -210,6 +209,22 @@ WindowManager* Context::GetWindowManager(const std::string name) const
     }
 }
 
+//Вырезать менеджер окон - Cut window manager
+//Внимание при подобной отвязке менеджера окон, он должен быть привязан к другому контексту, иначе окна внутри него будут продолжать отображаться на старом контексте - Attention when unlinking a window manager like this, it must be linked to another context, otherwise the windows inside will continue to display on the old context
+WindowManager* Context::CutWindowManager(const std::string name)
+{
+    std::map<const std::string, WindowManager*>::iterator windowmanager = this->windowManagers.find(name);
+    if (windowmanager != this->windowManagers.end()) 
+    {
+        this->windowManagers.erase(windowmanager);
+        return windowmanager->second;
+    }
+    else 
+    {
+        return nullptr;
+    }
+};
+
 //Удалить менеджер окон - Delete manager window
 void Context::DeleteWindowManager(const std::string name)
 {
@@ -237,6 +252,22 @@ FormManager* Context::GetFormManager(const std::string name) const
         return formmanager->second;
     }
     else
+    {
+        return nullptr;
+    }
+};
+
+//Вырезать менеджер форм - Cut form manager
+//Внимание при подобной отвязке менеджера форм, он должен быть привязан к другому контексту, иначе формы внутри него будут продолжать отображаться на старом контексте - Attention when unlinking a form manager like this, it must be linked to another context, otherwise the forms inside will continue to display on the old context
+FormManager* Context::CutFormManager(const std::string name)
+{
+    std::map<const std::string, FormManager*>::iterator formmanager = this->formManagers.find(name);
+    if (formmanager != this->formManagers.end()) 
+    {
+        this->formManagers.erase(formmanager);
+        return formmanager->second;
+    }
+    else 
     {
         return nullptr;
     }

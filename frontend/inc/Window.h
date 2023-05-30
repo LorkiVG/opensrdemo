@@ -5,14 +5,12 @@ class WindowManager;
 class Window
 {
     private:
-        //Имя окна
         std::string name;
-        WindowManager* manager;
-        //Текущий вид
         View* currentView;
-        Context* context;
         void SetContext(Context* context);
+        Context* context;
         void SetManager(WindowManager* manager);
+        WindowManager* manager;
     public:
         Window(const std::string& name);
         ~Window();
@@ -20,7 +18,6 @@ class Window
         View* GetCurrentView() const;
         void SetCurrentView(View* view, bool autoClose = 0);
         
-        //Берёт контекст из Context или если задан менеджер использует контекст заданый в менеджере
         Context* GetContext();
         WindowManager* GetManager();
         

@@ -4,6 +4,7 @@
 
 Form::Form(const std::string& name) : View(name)
 {
+    this->name = name;
     this->manager = nullptr;
 };
 
@@ -27,5 +28,5 @@ void Form::SetManager(FormManager* manager)
 
 std::string Form::GetName()
 {
-    return this->view->GetTitle();
+    return this->name;
 }

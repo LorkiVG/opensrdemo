@@ -14,6 +14,12 @@ View::~View()
 }
 
 
+void View::SetWindow(Window* window)
+{
+    this->window = window;
+}
+
+
 Context* View::GetContext()
 {
     return this->window->GetContext();
@@ -27,9 +33,16 @@ void View::Load(fs::path path)
         this->view = context->LoadDocument(path);
     }
 }
-
+void View::Show()
+{
+    this->view->Show();
+}
 void View::Close()
 {
     this->view->Close();
 }
 
+void View::GetElementsByTagName(Rml::ElementList& elements, const std::string& tag)
+{
+    this->view->GetElementsByTagName(elements, tag);
+}
