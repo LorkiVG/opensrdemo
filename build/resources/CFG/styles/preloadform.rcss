@@ -1,0 +1,16 @@
+@keyframes fadein {
+    0% {opacity: 0;width: 32%;height: 32%;}
+    100% {opacity: 0.9; width: 40%;height: 40%;}
+}
+@keyframes fadeout {
+    0% {opacity: 0.9; width: 40%;height: 40%;}
+    100% {opacity: 0;width: 32%;height: 32%;}
+}
+
+.fade-in {
+    animation: 1s cubic-in-out alternate fadein;
+}
+
+.fade-out {
+    animation: 1s cubic-in-out alternate fadeout;
+}

@@ -1,0 +1,46 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="../styles/Settings.rcss"/>
+        <link type="text/template" href="../../../themes/black/main.rml" />
+        <title>OpenSRDemo</title>
+        <style>
+            body
+            {
+                width: 600px;
+                height: 500px;
+                margin: auto;
+                font-size: 22px;
+            }
+
+            div#title_bar div#icon
+            {
+                display: none;
+            }
+
+            div#content
+            {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body template="window">
+        <select>
+            <option>Тестовая опция 1</option>
+            <option>Тестовая опция 2</option>
+            <option>Тестовая опция 3</option>
+            <option>Тестовая опция 4</option>
+            <option>Тестовая опция 5</option>
+            
+        </select>
+        <input></input>
+        <input type="range"></input>
+        <input type="password"></input>
+        <form>
+            <input type="radio"></input>
+        <input type="radio"></input>
+        </form>
+        
+        <input type="checkbox"></input>
+
+    </body>
+</rml>    

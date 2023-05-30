@@ -1,0 +1,98 @@
+{
+    "graph": {
+        "stars": {
+            "1": "resorses/DATA/stars/RedGigant",
+            "2": "resorses/DATA/stars/BlueGigant",
+            "3": "resorses/DATA/stars/Default",
+            "4": "resorses/DATA/stars/RedDwarf",
+            "5": "resorses/DATA/stars/WhiteDwarf"
+        },
+        "ships": {
+            "ranger": {
+                "maloc": "resorses/DATA/ships/ranger/maloc",
+                "peleng": "resorses/DATA/ships/ranger/peleng",
+                "people": "resorses/DATA/ships/ranger/people",
+                "fei": "resorses/DATA/ships/ranger/fei",
+                "gaal": "resorses/DATA/ships/ranger/gaal"
+            }
+        }
+    },
+    "cursor": {
+        "main": "resorses/DATA/cursor/main"
+    },
+    "interface": {
+        "mainmenu": {
+            "b": "resorses/DATA/sound/clickbutton.mp3",
+            "bg": "resorses/DATA/forms/mainmenu/"
+        }
+    },
+    "sound": {
+        "clickbutton": {
+            "1": "resorses/DATA/sound/clickbutton.mp3"
+        }
+    },
+    "music": {
+        "main": {
+            "1": "resorses/DATA/music/main/1.mp3",
+            "2": "resorses/DATA/music/main/2.mp3"
+        },
+        "fly": {
+            "1": "resorses/DATA/music/fly/1.mp3",
+            "2": "resorses/DATA/music/fly/2.mp3",
+            "3": "resorses/DATA/music/fly/1.mp3",
+            "4": "resorses/DATA/music/fly/2.mp3"
+        },
+        "planets": {
+            "maloc": {
+                "1": "resorses/DATA/music/planets/maloc/1.mp3",
+                "2": "resorses/DATA/music/planets/maloc/2.mp3",
+                "3": "resorses/DATA/music/planets/maloc/3.mp3",
+                "4": "resorses/DATA/music/planets/maloc/4.mp3"
+            },
+            "peleng": {
+                "1": "resorses/DATA/music/planets/peleng/1.mp3",
+                "2": "resorses/DATA/music/planets/peleng/2.mp3",
+                "3": "resorses/DATA/music/planets/peleng/3.mp3",
+                "4": "resorses/DATA/music/planets/peleng/4.mp3"
+            },
+            "people": {
+                "1": "resorses/DATA/music/planets/people/1.mp3",
+                "2": "resorses/DATA/music/planets/people/2.mp3",
+                "3": "resorses/DATA/music/planets/people/3.mp3",
+                "4": "resorses/DATA/music/planets/people/4.mp3"
+            },
+            "fei": {
+                "1": "resorses/DATA/music/planets/fei/1.mp3",
+                "2": "resorses/DATA/music/planets/fei/2.mp3",
+                "3": "resorses/DATA/music/planets/fei/3.mp3",
+                "4": "resorses/DATA/music/planets/fei/4.mp3"
+            },
+            "gaal": {
+                "1": "resorses/DATA/music/planets/gaal/1.mp3",
+                "2": "resorses/DATA/music/planets/gaal/2.mp3",
+                "3": "resorses/DATA/music/planets/gaal/3.mp3",
+                "4": "resorses/DATA/music/planets/gaal/4.mp3"
+            }
+        },
+        "ruins": {
+            "RC": {
+                "1": "resorses/DATA/music/ruins/RC/1.mp3",
+                "2": "resorses/DATA/music/ruins/RC/2.mp3",
+                "3": "resorses/DATA/music/ruins/RC/3.mp3",
+                "4": "resorses/DATA/music/ruins/RC/4.mp3"
+            },
+            "SB": {
+                "1": "resorses/DATA/music/ruins/SB/1.mp3",
+                "2": "resorses/DATA/music/ruins/SB/2.mp3",
+                "3": "resorses/DATA/music/ruins/SB/3.mp3",
+                "4": "resorses/DATA/music/ruins/SB/4.mp3"
+            }
+        },
+        "war": {
+            "1": "resorses/DATA/music/war/1.mp3",
+            "2": "resorses/DATA/music/war/2.mp3",
+            "3": "resorses/DATA/music/war/3.mp3",
+            "4": "resorses/DATA/music/war/4.mp3"
+        }
+    }
+}

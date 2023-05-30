@@ -1,0 +1,5 @@
+<body>
+  <canvas class="minimap" width="20%" height="20%" position="absolute" top="0" right="0"></canvas>
+  <canvas class="space" width="100%" height="100%"></canvas>
+  <frame class="footer" ref="Footer.xml" position="absolute" bottom="0">
+</body>

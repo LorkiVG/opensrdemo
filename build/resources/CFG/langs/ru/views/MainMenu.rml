@@ -1,0 +1,30 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="../styles/MainMenu.rcss"/>
+        <title>OpenSRDemo</title>
+    </head>
+
+    <body>
+        
+        <div class="main">
+            <div class="header">
+                <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" />
+                <ul class="header_menu">
+                    <li onclick="OpenWindow(NewGame.rml)">Новая игра</li>
+                    <li onclick="OpenForm(Load.rml)">Загрузить</li>
+                    <li onclick="OpenForm(Settings.rml)">Настройки</li>
+                    <li onclick="OpenForm(Authors.rml)">Об Авторах</li>
+                    <li onclick="OpenForm(Contacts.rml)">Контакты</li>
+                    <li onclick="OpenForm(Exit.rml)">Выход</li>
+                </ul>
+            </div>
+            <div class="footer">
+                
+                <img class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
+            </div>
+
+            
+        </div>
+    </body>
+</rml>
