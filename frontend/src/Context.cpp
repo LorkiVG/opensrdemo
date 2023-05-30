@@ -140,11 +140,41 @@ void Context::SetPowerSave(bool powerSave)
     this->powerSave = powerSave;
 }
 
+//Добавить форму - Add form
+void Context::AddWindow(Window* window)
+{
+    window->context = this;
+    this->windows.insert(std::pair<const std::string, Window*>(window->GetName(), window));
+}
+//Получить окно - Get window
+Window* Context::GetWindow(const std::string name) const
+{
+    std::map<const std::string, Window*>::const_iterator window = this->windows.find(name);
+    if (window != this->windows.end())
+    {
+        return window->second;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+//Удалить окно - Delete window
+void Context::RemoveWindow(const std::string name)
+{
+    std::map<const std::string, Window*>::iterator window = this->windows.find(name);
+    if (window != this->windows.end())
+    {
+        delete window->second;
+        this->windows.erase(window);
+    }
+}
+
 
 //Добавить менеджер окон - Add manager window
 void Context::AddWindowManager(WindowManager* windowManager)
 {
-    windowManager->context = this;
+    windowManager->SetContext(this);
     this->windowManagers.insert(std::pair<const std::string, WindowManager*>(windowManager->GetName(), windowManager));
 }
 

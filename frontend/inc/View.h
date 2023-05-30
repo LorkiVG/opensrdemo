@@ -9,16 +9,15 @@ class Context;
 class View
 {
     private:
-        
+        Window* window;
     protected:
         Rml::ElementDocument* view;
     public:
-        //Нужно для более удобного назначения
-        Context* context;
         
         View(const std::string& name);
         ~View();
 
         void Load(fs::path path);
         void Close();
+    friend class Window;
 };

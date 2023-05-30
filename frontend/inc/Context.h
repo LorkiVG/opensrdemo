@@ -1,5 +1,6 @@
 #pragma once
 #include <RmlUi/Core.h>
+#include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
 #include <string>
 #include <map>
@@ -17,6 +18,7 @@ private:
     Rml::Context *context;
     KeyDownCallback keyDownCallback;
     bool powerSave;
+    std::map<std::string, Window*> windows;
     std::map<std::string, WindowManager*> windowManagers;
     std::map<std::string, FormManager*> formManagers;
 
@@ -36,6 +38,10 @@ public:
     void SetKeyDownCallback(KeyDownCallback keyDownCallback);
     bool GetPowerSave();
     void SetPowerSave(bool powerSave);
+
+    void AddWindow(Window* window);
+    Window* GetWindow(const std::string name) const;
+    void RemoveWindow(const std::string name);
 
     void AddWindowManager(WindowManager* windowmanager);
     WindowManager* GetWindowManager(const std::string name) const;

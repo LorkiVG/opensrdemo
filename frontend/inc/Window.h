@@ -1,19 +1,20 @@
 #pragma once
 #include "View.h"
+class WindowManager;
+
 class Window
 {
     private:
         //Имя окна
         std::string name;
-        //Если не задан windowManager то используется в качестве контекста
-        
+        WindowManager* manager;
         //Текущий вид
         View* currentView;
-
-
-    public:
         Context* context;
+        void SetContext(Context* context);
+    public:
         Window(const std::string& name);
+        ~Window();
         
         View* GetCurrentView() const;
         void SetCurrentView(View* view, bool autoClose = 0);
@@ -22,4 +23,8 @@ class Window
         Context* GetContext();
         
         std::string GetName() const;
+
+    friend class WindowManager;
+    friend class Context;
 };
+

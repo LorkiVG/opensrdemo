@@ -1,9 +1,10 @@
 #include "View.h"
+#include "Window.h"
 #include "Context.h"
 
 View::View(const std::string& name)
 {
-    this->context = nullptr;
+    this->window = nullptr;
 };
 
 View::~View()
@@ -14,7 +15,11 @@ View::~View()
 
 void View::Load(fs::path path)
 {
-    this->view = this->context->LoadDocument(path);
+    Context* context = this->window->GetContext();
+    if(context != nullptr)
+    {
+        this->view = this->window->GetContext()->LoadDocument(path);
+    }
 }
 
 void View::Close()
