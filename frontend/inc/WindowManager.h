@@ -16,6 +16,7 @@ class WindowManager
 
         void Add(Window* window);
         Window* Get(const std::string& name) const;
+        Window* Cut(const std::string& name);
         void Remove(const std::string& name);
         
         std::string GetName() const;

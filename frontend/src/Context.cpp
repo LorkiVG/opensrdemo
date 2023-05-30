@@ -143,7 +143,7 @@ void Context::SetPowerSave(bool powerSave)
 //Добавить форму - Add form
 void Context::AddWindow(Window* window)
 {
-    window->context = this;
+    window->SetContext(this);
     this->windows.insert(std::pair<const std::string, Window*>(window->GetName(), window));
 }
 //Получить окно - Get window
@@ -159,8 +159,26 @@ Window* Context::GetWindow(const std::string name) const
         return nullptr;
     }
 }
+
+//Вырезать окно - Cut window
+//Внимание при подобной отвязке окна, его требуется привязать сразу куда-то иначе его View будет проигрыватся на старом контексте - Attention when unlinking a window like this, it must be linked to somewhere immediately, otherwise its View will be played on the old context
+Window* Context::CutWindow(const std::string name)
+{
+    std::map<const std::string, Window*>::iterator window = this->windows.find(name);
+    if (window != this->windows.end())
+    {
+        this->windows.erase(window);
+        return window->second;
+    }
+    else 
+    {
+        return nullptr;
+    }
+    
+}
+
 //Удалить окно - Delete window
-void Context::RemoveWindow(const std::string name)
+void Context::DeleteWindow(const std::string name)
 {
     std::map<const std::string, Window*>::iterator window = this->windows.find(name);
     if (window != this->windows.end())
@@ -193,7 +211,7 @@ WindowManager* Context::GetWindowManager(const std::string name) const
 }
 
 //Удалить менеджер окон - Delete manager window
-void Context::RemoveWindowManager(const std::string name)
+void Context::DeleteWindowManager(const std::string name)
 {
     std::map<const std::string, WindowManager*>::iterator windowmanager = this->windowManagers.find(name);
     if (windowmanager != this->windowManagers.end()) 
@@ -225,7 +243,7 @@ FormManager* Context::GetFormManager(const std::string name) const
 };
 
 //Удалить менеджер форм - Delete manager form
-void Context::RemoveFormManager(const std::string name)
+void Context::DeleteFormManager(const std::string name)
 {
     std::map<const std::string, FormManager*>::iterator formmanager = this->formManagers.find(name);
     if (formmanager != this->formManagers.end()) 

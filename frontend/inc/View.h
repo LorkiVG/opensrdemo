@@ -10,6 +10,7 @@ class View
 {
     private:
         Window* window;
+        void SetWindow(Window* window);
     protected:
         Rml::ElementDocument* view;
     public:
@@ -17,7 +18,12 @@ class View
         View(const std::string& name);
         ~View();
 
+        Context* View::GetContext();
+
         void Load(fs::path path);
         void Close();
+        void Unload();
+
+
     friend class Window;
 };

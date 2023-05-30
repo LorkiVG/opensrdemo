@@ -55,7 +55,7 @@ void Window::SetCurrentView(View* view, bool autoClose)
     {
         delete this->currentView;
     }
-    view->window = this;
+    view->SetWindow(this);
     this->currentView = view;
 }
 

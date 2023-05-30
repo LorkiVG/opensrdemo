@@ -10,12 +10,18 @@ View::View(const std::string& name)
 View::~View()
 {
     this->view->Close();
+    delete this->view;
 }
 
 
+Context* View::GetContext()
+{
+    return this->window->GetContext();
+}
+
 void View::Load(fs::path path)
 {
-    Context* context = this->window->GetContext();
+    Context* context = this->GetContext();
     if(context != nullptr)
     {
         this->view = context->LoadDocument(path);

@@ -9,7 +9,7 @@ ContextManager::~ContextManager()
 {
     for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end();)
     {
-        context->second->UnloadAllDocuments();
+        
         delete context->second;
         contexts.erase(context);
     }

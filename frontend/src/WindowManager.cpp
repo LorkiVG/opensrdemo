@@ -24,14 +24,14 @@ Context* WindowManager::GetContext()
     return this->context;
 }
 
-// Добавить окно
+// Добавить окно - Add window
 void WindowManager::Add(Window* window)  
 {
     window->SetManager(this);
     this->windows[window->GetName()] = window;
 };
 
-// Получить форму
+// Получить окно - Get window
 Window* WindowManager::Get(const std::string& name) const
 {
     std::map<const std::string, Window*>::const_iterator window = this->windows.find(name);
@@ -45,7 +45,22 @@ Window* WindowManager::Get(const std::string& name) const
     }
 }
 
-// Удалить форму
+Window* WindowManager::Cut(const std::string& name)
+{
+    std::map<const std::string, Window*>::iterator window = this->windows.find(name);
+    if (window != this->windows.end()) 
+    {
+        window->second->SetManager(nullptr);
+        this->windows.erase(window);
+        return window->second;
+    }
+    else 
+    {
+        return nullptr;
+    }
+}
+
+// Удалить форму - Delete Form
 void WindowManager::Remove(const std::string& name) 
 {
     std::map<const std::string, Window*>::iterator window = this->windows.find(name);
