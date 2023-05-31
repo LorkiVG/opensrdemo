@@ -36,14 +36,19 @@ int FrontendMain()
 	//TODO Сделать Fonts manager
 	//Загрузка основного шрифта
     Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
-
+	
 	router->GetRoute(UIPATH / fs::path("mainmenu.rml"))->Initialize();
 
     bool running = true;
     while (running)
     {
+		
 		contextManager->ProcessEventsAll(&running);
         contextManager->UpdateAll();
+
+		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером (спасибо Rml UI за удобную возможность назначать страницы на которых не должно быть фокуса)
+		context->UnfocusDocument(mainWindow->GetCurrentView());
+
 		Backend::BeginFrame();
 		contextManager->RenderAll();
 		Backend::PresentFrame();

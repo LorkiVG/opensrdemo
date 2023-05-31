@@ -27,6 +27,7 @@ public:
     std::string GetName() const;
 
     void UnloadAllDocuments();
+    void UnfocusDocument(View* view);
 
     //Загрузить документ(нужно в основном для View) - Load document(mostly needed for View)
     Rml::ElementDocument* LoadDocument(const fs::path& path);

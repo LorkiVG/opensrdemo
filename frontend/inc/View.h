@@ -21,11 +21,18 @@ class View
 
         Context* GetContext();
 
+        void AddEventListener(const Rml::String& event, Rml::EventListener* listener, bool in_capture_phase = false);
+        void GetElementsByTagName(Rml::ElementList& elements, const std::string& tag);
+
+        void PullToFront();
+        void PushToBack();
+
         void Load(fs::path path);
         void Close();
-        void Show();
+        void Show(Rml::ModalFlag modalFlag = Rml::ModalFlag::None, Rml::FocusFlag focusFlag = Rml::FocusFlag::Auto);
         void Unload();
 
-        void GetElementsByTagName(Rml::ElementList& elements, const std::string& tag);
+        
     friend class Window;
+    friend class Context;
 };

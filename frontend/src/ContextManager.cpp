@@ -50,7 +50,6 @@ std::string ContextManager::GetName() const
 
 void ContextManager::ProcessEventsAll(bool* running)
 {
-    MAINLOG->WriteStr(to_string(this->contexts.size()),"\n");
     for(std::map<const std::string, Context*>::iterator context = this->contexts.begin(); context != this->contexts.end(); ++context)
     {
         

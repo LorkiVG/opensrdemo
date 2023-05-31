@@ -108,11 +108,16 @@ std::string Context::GetName() const
     return this->context->GetName();
 }
 
+
 void Context::UnloadAllDocuments()
 {
     this->context->UnloadAllDocuments();
 }
 
+void Context::UnfocusDocument(View* view)
+{
+    this->context->UnfocusDocument(view->view);
+}
 
 Rml::ElementDocument* Context::LoadDocument(const fs::path& path)
 {
