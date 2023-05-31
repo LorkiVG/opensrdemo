@@ -16,6 +16,20 @@ void Form::Load(fs::path path)
         if(context != nullptr)
         {
             this->view = context->LoadDocument(path);
+            Rml::ElementList imgElements;
+            this->view->GetElementsByTagName(imgElements, "img");
+            for (auto& element : imgElements)
+            {
+                if (element->HasAttribute("src"))
+                {
+                    string srcAttribute = element->GetAttribute("src")->Get<string>();
+                    boost::replace_all(srcAttribute, "{RESPATH}", RESPATH.string());
+                    boost::replace_all(srcAttribute, "{UIPATH}", UIPATH.string());
+                    boost::replace_all(srcAttribute, "{DATAPATH}", DATAPATH.string());
+                    boost::replace_all(srcAttribute, "{STYLESPATH}", STYLESPATH.string());
+                    element->SetAttribute("src", srcAttribute);
+                }
+            }
         }
     }
     

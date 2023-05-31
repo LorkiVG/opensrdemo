@@ -20,8 +20,8 @@
             </div>
             <div class="footer">
                 
-                <img class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
-                <img class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
+                <img onclick="OpenWindow(NewGame.rml)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img onclick="OpenWindow(NewGame.rml)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
             </div>
 
             

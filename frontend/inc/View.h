@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include "modules/inc/FilePaths.h"
+#include <boost/algorithm/string/replace.hpp>
+
 class Context;
 class Window;
 

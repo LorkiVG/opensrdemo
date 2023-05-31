@@ -2,6 +2,16 @@
 #include <memory>
 #include "controllers/Controller.h"
 
+class MainMenuControllerEventHandlerInstancer : public Rml::EventListenerInstancer
+{
+public:
+	MainMenuControllerEventHandlerInstancer();
+	virtual ~MainMenuControllerEventHandlerInstancer();
+
+	Rml::EventListener* InstanceEventListener(const Rml::String& value, Rml::Element* element) override;
+
+};
+
 class MainMenuController : public BaseController {
     private:
         Rml::ElementDocument* window;

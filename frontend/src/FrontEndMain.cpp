@@ -22,8 +22,8 @@ int FrontendMain()
 	context->AddFormManager(mainFormManager);
 
 	//!Внимание задание роутера тут времено для демки 3 июня в будущем планируется переделка
-	router->AddRoute(UIPATH / fs::path("mainmenu.rml"), make_unique<MainMenuControllerFactory>());
-	router->AddRoute(UIPATH / fs::path("settings.rml"), make_unique<SettingsControllerFactory>());
+	router->AddRoute(fs::path("MainMenu.rml"), make_unique<MainMenuControllerFactory>());
+	router->AddRoute(fs::path("Settings.rml"), make_unique<SettingsControllerFactory>());
 
 
 	//!Внимание такая инициализация дебагера временна
@@ -37,7 +37,7 @@ int FrontendMain()
 	//Загрузка основного шрифта
     Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
 	
-	router->GetRoute(UIPATH / fs::path("mainmenu.rml"))->Initialize();
+	router->GetRoute(fs::path("MainMenu.rml"))->Initialize();
 
     bool running = true;
     while (running)
@@ -46,7 +46,7 @@ int FrontendMain()
 		contextManager->ProcessEventsAll(&running);
         contextManager->UpdateAll();
 
-		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером (спасибо Rml UI за удобную возможность назначать страницы на которых не должно быть фокуса)
+		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером 
 		context->UnfocusDocument(mainWindow->GetCurrentView());
 
 		Backend::BeginFrame();
