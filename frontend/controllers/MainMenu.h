@@ -1,14 +1,12 @@
 #include <string>
 #include <memory>
-#include "WindowManager.h"
 #include "controllers/Controller.h"
-
 
 class MainMenuController : public BaseController {
     private:
         Rml::ElementDocument* window;
     public:
-        void Initialize(WindowManager* windowManager, const fs::path name);
+        void Initialize() override;
         
 };
 

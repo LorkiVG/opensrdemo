@@ -1,5 +1,9 @@
 #include <Router.h>
 
+Router::Router(const std::string name)
+{
+    this->name = name;
+}
 
 void Router::AddRoute(const fs::path path, std::unique_ptr<BaseControllerFactory> factory) 
 {

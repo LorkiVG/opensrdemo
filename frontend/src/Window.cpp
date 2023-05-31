@@ -5,12 +5,13 @@ Window::Window(const std::string& name)
 {
     this->name = name;
     this->currentView = nullptr;
+    this->manager = nullptr;
     this->context = nullptr;
 }
 
 Window::~Window()
 {
-    if(this->currentView != nullptr)
+    if(this->currentView)
     {
         delete this->currentView;
     }
@@ -18,7 +19,7 @@ Window::~Window()
 
 Context* Window::GetContext()
 {
-    if(this->manager != nullptr) 
+    if(this->manager) 
     {
         return this->manager->GetContext();
     }
@@ -51,7 +52,7 @@ View* Window::GetCurrentView() const
 
 void Window::SetCurrentView(View* view, bool autoClose)
 {
-    if(autoClose && this->currentView != nullptr)
+    if(autoClose && this->currentView)
     {
         delete this->currentView;
     }
@@ -63,3 +64,4 @@ std::string Window::GetName() const
 {
     return this->name;
 }
+

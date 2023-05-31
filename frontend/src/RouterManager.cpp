@@ -47,3 +47,6 @@ std::string RouterManager::GetName() const
 {
     return this->name;
 }
+
+RouterManager* routerManager = new RouterManager("main");
+Router* router = new Router("main");

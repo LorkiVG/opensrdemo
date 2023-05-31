@@ -12,6 +12,7 @@ class Router {
         std::map<fs::path, std::unique_ptr<BaseControllerFactory>> factories;
 
     public:
+        Router(const std::string name);
         void AddRoute(const fs::path path, std::unique_ptr<BaseControllerFactory> factory);
         void RemoveRoute(const fs::path path);
 
@@ -19,4 +20,3 @@ class Router {
 
         std::string GetName();
 };
-

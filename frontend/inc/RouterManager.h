@@ -1,11 +1,9 @@
 #pragma once
 #include "Router.h"
 #include "modules/inc/LOG.h"
-#include "WindowManager.h"
-#include "FormManager.h"
 #include "FrontEndMain.h"
 #include "ContextManager.h"
-#include "RouterManager.h"
+#include "Router.h"
 
 class RouterManager
 {
@@ -24,3 +22,6 @@ class RouterManager
         std::string GetName() const;
 };
 
+
+extern RouterManager* routerManager;
+extern Router* router;
