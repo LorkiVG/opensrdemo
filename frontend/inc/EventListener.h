@@ -6,10 +6,10 @@ public:
 	EventListener(const Rml::String& value);
 	virtual ~EventListener();
 
-	/// Посылаем в эвент-менеджер
+	/// @brief Посылаем в эвент-менеджер
 	void ProcessEvent(Rml::Event& event) override;
 
-	/// По документации тут надо уничтожать.
+	/// @brief При OnDetach уничтожаем текущий объект
 	void OnDetach(Rml::Element* element) override;
 
 private:

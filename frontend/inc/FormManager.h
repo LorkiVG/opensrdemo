@@ -15,9 +15,16 @@ class FormManager
 
         Context* GetContext() const;
 
+        /// @brief Добавить форму в менеджер
+        /// @param form Сама форма
         void Add(Form* form);
-        Form* Get(const std::string& path) const;
-        void Remove(const std::string& path); 
+        /// @brief Получить форму по имени
+        /// @param name Имя формы 
+        /// @return Получаемая форма
+        Form* Get(const std::string& name) const;
+        /// @brief Удалить форму по имени
+        /// @param name Имя формы
+        void Remove(const std::string& name); 
         
         std::string GetName() const;
     friend Context;
