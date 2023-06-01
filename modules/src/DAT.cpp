@@ -1,21 +1,21 @@
 #include <DAT.h>
 
 //Инициализация
-void DATFile::Init(const DATFile& document) 
+void DAT::Init(const DAT& document) 
 {
     this->content = document.content;
 }
-void DATFile::Init(const fs::path& path)
+void DAT::Init(const fs::path& path)
 {
     boost::property_tree::read_json(path.string(), this->content);
     this->path = path;
     this->name = this->path.stem().string();
 }
-void DATFile::Init(DATFile& document1, const DATFile& document2) 
+void DAT::Init(DAT& document1, const DAT& document2) 
 {
     document1.content = document2.content;
 }
-void DATFile::Init(DATFile& document, const fs::path& path) 
+void DAT::Init(DAT& document, const fs::path& path) 
 {
     boost::property_tree::read_json(path.string(), document.content);
     document.path = path;
@@ -23,27 +23,27 @@ void DATFile::Init(DATFile& document, const fs::path& path)
 }
 
 //Инициализация при помощи конструктора
-DATFile::DATFile(const DATFile& document) {
+DAT::DAT(const DAT& document) {
     this->Init(document);
 };
-DATFile::DATFile(const DATFile& document, const string& name) 
+DAT::DAT(const DAT& document, const string& name) 
 {
     this->Init(document);
     this->name = name;
 };
 
-DATFile::DATFile(const fs::path& path) 
+DAT::DAT(const fs::path& path) 
 {
     this->Init(path);
 };
-DATFile::DATFile(const fs::path& path, const string& name) 
+DAT::DAT(const fs::path& path, const string& name) 
 {
     this->Init(path);
     this->name = name;
 };
 
 //Вывод в лог DAT файла (переписать на write_json)
-void DATFile::Representation()
+void DAT::Representation()
 {
     // Определите элемент стека как tuple из итератора, конечного итератора, узла и уровня вложенности
     using StackItem = std::tuple<boost::property_tree::ptree::iterator, boost::property_tree::ptree::iterator, boost::property_tree::ptree*, int>;
@@ -126,45 +126,44 @@ void DATFile::Representation()
 };
 
 //Сравнение двух загруженных DAT файлов
-bool DATFile::Compare(const DATFile& document) const {
+bool DAT::Compare(const DAT& document) const {
     if (document.content == content) return true;
 };
-bool DATFile::Compare(const DATFile& document1, const DATFile& document2) {
+bool DAT::Compare(const DAT& document1, const DAT& document2) {
     if (document1.content == document2.content) return true;
 };
 
 
 //TODO Написать мердж методы
 //Слияние DAT файлов
-DATFile* DATFile::Merge(const DATFile& document1, const DATFile& document2) 
+DAT* DAT::Merge(const DAT& document1, const DAT& document2) 
 {
-    DATFile* out = new DATFile(document1);
+    DAT* out = new DAT(document1);
     return out;
 };
-void DATFile::Merge(const DATFile& document2) {
+void DAT::Merge(const DAT& document2) {
     
 };
-void DATFile::Merge(const fs::path& path) {
+void DAT::Merge(const fs::path& path) {
     
 };
 
+const std::string DAT::GetName() const
+{
+    return this->name;
+};
 
 
-const std::string DATFile::GetName(DATFile& document) const 
+const std::string DAT::GetName(DAT& document) 
 {
     return document.name;
 };
 
-void DATFile::SetName(const DATFile& document) 
-{
-    this->name = document.name;
-};
-
-void DATFile::SetName(string name) 
+void DAT::SetName(string name) 
 {
     this->name = name;
 };
 
 
-DATFile* CACHEDATA;
-DATFile* MAINDAT;
+DAT* CACHEDATA;
+DAT* MAINDAT;
