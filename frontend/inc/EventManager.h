@@ -2,8 +2,6 @@
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/Event.h>
 #include <RmlUi/Core/Types.h>
-#include "modules/inc/LOG.h"
-#include "modules/inc/Validator.h"
 
 class EventHandler;
 
