@@ -1,3 +1,29 @@
-<body>
-    <image ref="">
-</body>
+<rml>
+    <head>
+        <link type="text/rcss" href="../styles/MainMenu.rcss"/>
+        <title>OpenSRDemo</title>
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="header">
+                <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" />
+                <ul class="header_menu">
+                    <li onclick="OpenWindow(SpaceDemo.rml)">New Game</li>
+                    <li onclick="OpenForm(Load.rml)">Load Game</li>
+                    <li onclick="OpenForm(Settings.rml)">Settings</li>
+                    <li onclick="OpenForm(Authors.rml)">Authors</li>
+                    <li onclick="OpenForm(Contacts.rml)">Contacts</li>
+                    <li onclick="Exit()">Exit</li>
+                </ul>
+            </div>
+            <div class="footer">
+                
+                <img onclick="OpenWindow(vertix.games)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img onclick="OpenWindow(snk-games.net)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
+            </div>
+
+            
+        </div>
+    </body>
+</rml>

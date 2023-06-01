@@ -1,0 +1,77 @@
+body 
+{
+    width: 100%;
+    height: 100%;
+    decorator: image("../../../../DATA/forms/mainform/bg/1.png" none cover);
+}
+
+.main 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 88%;
+    height: 100%;
+    margin:auto;
+}
+
+
+li {
+    font-family: boucle;
+    font-size: 4.3em;
+	transition: padding-left background-color transform 1.6s elastic-out;
+	transform: scale(1.0);
+	color: #b1b1b1;
+    cursor: pointer;
+}
+li:hover {
+	padding-left: 10px;
+	transform: scale(1.1);
+	color: #ffffff;
+} 
+.header 
+{
+    margin-top: 6%;
+}
+.header_logo 
+{
+    max-width: 70%;
+}
+
+.header_menu 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5%;
+    height: 40%;
+    min-height: 400px;
+    margin-top: 7%;
+}
+.header_menu li 
+{
+    margin: 5px 0;
+}
+
+.footer 
+{
+    align-self: flex-end;
+}
+
+.footer_logoopensr 
+{
+    max-width: 85px;
+    margin: 5px;
+}
+.footer_logosnk 
+{
+    max-width: 75px;
+    min-width: 65px;
+    margin: 5px;
+}
+@keyframes spin {
+    0% { opacity: 0;width: 32%;height: 32%; cursor: default;}
+    100% { opacity: 1; width: 40%;height: 40%; cursor: pointer;}
+
+}

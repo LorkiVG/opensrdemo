@@ -5,23 +5,22 @@
     </head>
 
     <body>
-        
         <div class="main">
             <div class="header">
                 <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" />
                 <ul class="header_menu">
-                    <li onclick="OpenWindow(NewGame.rml)">Новая игра</li>
+                    <li onclick="OpenWindow(SpaceDemo.rml)">Новая игра</li>
                     <li onclick="OpenForm(Load.rml)">Загрузить</li>
                     <li onclick="OpenForm(Settings.rml)">Настройки</li>
-                    <li onclick="OpenForm(Authors.rml)">Об Авторах</li>
+                    <li onclick="OpenForm(Authors.rml)">О проекте</li>
                     <li onclick="OpenForm(Contacts.rml)">Контакты</li>
-                    <li onclick="OpenForm(Exit.rml)">Выход</li>
+                    <li onclick="Exit()">Выход</li>
                 </ul>
             </div>
             <div class="footer">
                 
-                <img onclick="OpenWindow(NewGame.rml)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
-                <img onclick="OpenWindow(NewGame.rml)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
+                <img onclick="OpenWindow(vertix.games)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img onclick="OpenWindow(snk-games.net)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
             </div>
 
             

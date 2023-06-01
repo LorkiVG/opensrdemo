@@ -1,0 +1,11 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="../styles/FPS.rcss"/>
+        <title>FPS</title>
+    </head>
+    <body>
+        <div class="form">
+            <div id="fps-counter">FPS: <span id="fps-value">0</span></div>
+        </div>
+    </body>
+</rml>
