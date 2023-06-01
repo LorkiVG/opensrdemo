@@ -9,7 +9,7 @@ void MainMenuController::Initialize()
     EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
-	view->Load(fs::path(UIPATH / fs::path("MainMenu.rml")));    
+	view->Load(fs::path(UIPATH / fs::path("Preloader.rml")));    
 
     view->Show();
 };

@@ -9,8 +9,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    string breakp;
-    cin >> breakp;
     // Инициализируем логи пути на данном этапе уже инициализированы
     MAINLOG = new LogFile(LOGPATH / fs::path("main.log"));
     MAINLOG->WriteStr("Начало загрузки настроек - Starting loading settings", "\n");

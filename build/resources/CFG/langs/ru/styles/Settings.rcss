@@ -1,5 +1,17 @@
-body 
+body
 {
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    font-size: 22px;
+}
+
+div#title_bar div#icon
+{
+    display: none;
+}
+
+div#content
+{
+    text-align: left;
 }

@@ -63,12 +63,14 @@ li:hover {
 {
     max-width: 85px;
     margin: 5px;
+    cursor: pointer;
 }
 .footer_logosnk 
 {
     max-width: 75px;
     min-width: 65px;
     margin: 5px;
+    cursor: pointer;
 }
 @keyframes spin {
     0% { opacity: 0;width: 32%;height: 32%; cursor: default;}
