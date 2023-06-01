@@ -1,6 +1,6 @@
 #include <LOG.h>
 
-LogFile::LogFile(fs::path path)
+LOG::LOG(fs::path path)
 {
     this->path = path;
     // Проверяем существование файла
@@ -8,13 +8,13 @@ LogFile::LogFile(fs::path path)
     log << "Старт - Start\n";
     log.close();
 };
-void LogFile::WriteStr(string str) 
+void LOG::WriteStr(string str) 
 {
     ofstream log(this->path.string(), ios::app);
     log << str;
     log.close();
 };
-void LogFile::WriteStr(string str, string end) 
+void LOG::WriteStr(string str, string end) 
 {
     ofstream log(this->path.string(), ios::app);
     log << str << end;
@@ -28,4 +28,4 @@ string Indent(int level)
 };
 
 
-LogFile* MAINLOG;
+LOG* MAINLOG;
