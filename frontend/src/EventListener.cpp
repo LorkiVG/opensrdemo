@@ -14,7 +14,7 @@ EventListener::~EventListener()
 /// @param event Указатель на эвент
 void EventListener::ProcessEvent(Rml::Event& event)
 {
-	EventManager::ProcessEvent(event, value);
+	EventManager::ProcessEvent(event, this->value);
 }
 
 /// По документации тут надо уничтожать.

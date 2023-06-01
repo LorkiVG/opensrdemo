@@ -1,6 +1,6 @@
 #include "controllers/Preloader.h"
 
-void PreloaderController::Initialize(const fs::path name) 
+void PreloaderController::Initialize() 
 {
     
 };

@@ -3,15 +3,12 @@
 #include <RmlUi/Core/Context.h>
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/ElementUtilities.h>
-#include <RmlUi_Backend.h>
+#include "RouterManager.h"
 
-// The game's element context (declared in main.cpp).
-extern Rml::Context* context;
-
-// The event handler for the current screen. This may be nullptr if the current screen has no specific functionality.
+// Обработчик событий для текущего экрана. Может быть nullptr если текущий экран не имеет какой-то функциональности.
 static EventHandler* event_handler = nullptr;
 
-// The event handlers registered with the manager.
+// Обработчики событий в текущем менеджере
 using EventHandlerMap = Rml::SmallUnorderedMap<Rml::String, Rml::UniquePtr<EventHandler>>;
 EventHandlerMap event_handlers;
 
@@ -36,15 +33,20 @@ void EventManager::RegisterEventHandler(const Rml::String& handler_name, Rml::Un
 	event_handlers[handler_name] = std::move(handler);
 }
 
-// Стандартный обработчик событий
+// Стандартный главный обработчик событий
 void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value)
 {
-	Rml::StringList commands;
+    //Подразделяем на команды строку
+    Rml::StringList commands;
 	Rml::StringUtilities::ExpandString(commands, value, ';');
+    Validator* validator = new Validator("(\\w+)\\((.*?)\\)");
 	for (size_t i = 0; i < commands.size(); ++i)
 	{
-		Rml::StringList values;
-		Rml::StringUtilities::ExpandString(values, commands[i], ' ');
-        MAINLOG->WriteStr(value, "\n");
+        std::vector<std::string> matches = validator->GetMatches(commands[i]);
+        if(matches[1] == "OpenForm")
+        {
+            router->GetRoute(matches[2])->Initialize();
+        }
 	}
+    delete validator;
 }

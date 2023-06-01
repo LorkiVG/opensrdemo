@@ -4,14 +4,14 @@
 #include <iostream>
 #include <boost/regex.hpp>
 #include <boost/algorithm/string/replace.hpp>
-
 #include "Context.h"
-
 #include "EventListenerInstancer.h"
 #include "EventManager.h"
 
+
 extern Window* mainWindow;
 extern FormManager* mainFormManager;
+
 
 // Базовый наследуемый класс для всех контроллеров
 class BaseController {
@@ -19,6 +19,7 @@ class BaseController {
         virtual ~BaseController();   
         virtual void Initialize();
 };
+
 // Базовая наследуемая фабрика для контроллеров
 class BaseControllerFactory 
 {

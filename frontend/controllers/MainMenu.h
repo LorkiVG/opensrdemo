@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <memory>
 #include "controllers/Controller.h"
@@ -15,9 +16,9 @@ public:
 class MainMenuController : public BaseController {
     private:
         Rml::ElementDocument* window;
+        
     public:
         void Initialize() override;
-        
 };
 
 class MainMenuControllerFactory : public BaseControllerFactory {

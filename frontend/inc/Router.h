@@ -6,6 +6,7 @@
 #include "controllers/Galaxy.h"
 #include "controllers/Preloader.h"
 #include "controllers/Settings.h"
+
 class Router {
     private:
         std::string name;

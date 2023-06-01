@@ -1,8 +1,9 @@
+#pragma once
 #include "controllers/Controller.h"
 
 class PreloaderController : public BaseController {
     public:
-        void Initialize(const fs::path name);
+        void Initialize() override;
 };
 
 
