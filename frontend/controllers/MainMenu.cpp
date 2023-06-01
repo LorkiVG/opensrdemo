@@ -17,13 +17,14 @@ void MainMenuController::Initialize()
 
     View* view = new View("mainmenu");
 	mainWindow->SetCurrentView(view);
-    
+
+    EventListenerInstancer event_listener_instancer;
+	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
+
 	view->Load(fs::path(UIPATH / fs::path("MainMenu.rml")));
     
     
     
-    EventListenerInstancer event_listener_instancer;
-	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
     view->Show();
     Form* form = new Form("settings");
