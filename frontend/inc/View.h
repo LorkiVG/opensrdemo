@@ -3,7 +3,7 @@
 #include <RmlUi/Core.h>
 #include <string>
 #include <map>
-#include "modules/inc/FilePaths.h"
+#include "modules/inc/FilePathsManager.h"
 #include <boost/algorithm/string/replace.hpp>
 
 class Context;

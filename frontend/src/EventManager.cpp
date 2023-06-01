@@ -2,8 +2,8 @@
 #include <RmlUi/Core/ElementUtilities.h>
 #include "EventManager.h"
 #include "EventHandler.h"
-#include "modules/inc/LOG.h"
-#include "modules/inc/Validator.h"
+#include "modules/inc/LOGManager.h"
+#include "modules/inc/ValidateManager.h"
 #include "RouterManager.h"
 
 // Обработчик событий для текущего экрана. Может быть nullptr если текущий экран не имеет какой-то функциональности.
@@ -40,7 +40,7 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value)
     //Подразделяем на команды строку
     Rml::StringList commands;
 	Rml::StringUtilities::ExpandString(commands, value, ';');
-    Validator* validator = new Validator("(\\w+)\\((.*?)\\)");
+    ValidateManager* validator = new ValidateManager("(\\w+)\\((.*?)\\)");
 	for (size_t i = 0; i < commands.size(); ++i)
 	{
         std::vector<std::string> matches = validator->GetMatches(commands[i]);

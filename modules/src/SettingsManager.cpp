@@ -1,8 +1,8 @@
-#include <ManageSettings.h>
+#include <SettingsManager.h>
 
 
 
-SettingsFile::SettingsFile(const fs::path& filePath)
+SettingsManager::SettingsManager(const fs::path& filePath)
 {
     this->filePath = filePath;
     Load();
@@ -10,16 +10,16 @@ SettingsFile::SettingsFile(const fs::path& filePath)
 
 
 //Сохранение настроек
-void SettingsFile::Save() const 
+void SettingsManager::Save() const 
 {
     ini_parser::write_ini(filePath.string(), this->ptree);
 }
 
 //Загрузка настроек
-void SettingsFile::Load()
+void SettingsManager::Load()
 {
     ini_parser::read_ini(filePath.string(), this->ptree);
 }
 
 //Основной файл настроек
-SettingsFile* SETTINGS;
+SettingsManager* SETTINGS;

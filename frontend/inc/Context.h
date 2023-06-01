@@ -1,6 +1,6 @@
 #pragma once
 #include <RmlUi_Backend.h>
-#include "modules/inc/LOG.h"
+#include "modules/inc/LOGManager.h"
 #include "FormManager.h"
 #include "WindowManager.h"
 

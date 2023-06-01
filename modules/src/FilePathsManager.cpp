@@ -1,4 +1,4 @@
-#include <FilePaths.h>
+#include <FilePathsManager.h>
 
 namespace fs = boost::filesystem;
 

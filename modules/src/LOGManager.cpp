@@ -1,4 +1,4 @@
-#include <LOG.h>
+#include <LOGManager.h>
 
 LOG::LOG(fs::path path)
 {

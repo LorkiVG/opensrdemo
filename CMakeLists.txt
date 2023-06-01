@@ -74,12 +74,12 @@ target_link_libraries(OpenSRDemo ${Boost_LIBRARIES})
 link_libraries(${Boost_LIBRARIES})
 
 #Добавление библиотек фронтенда и бекенда в исполняемый файл - Adding libraries frontend and backend to the executable file
-target_link_libraries(OpenSRDemo FilePaths)
-target_link_libraries(OpenSRDemo LOG)
-target_link_libraries(OpenSRDemo ManageSettings)
-target_link_libraries(OpenSRDemo DAT)
-target_link_libraries(OpenSRDemo Validator)
-target_link_libraries(OpenSRDemo Browser)
+target_link_libraries(OpenSRDemo FilePathsManager)
+target_link_libraries(OpenSRDemo LOGManager)
+target_link_libraries(OpenSRDemo SettingsManager)
+target_link_libraries(OpenSRDemo DATManager)
+target_link_libraries(OpenSRDemo ValidateManager)
+target_link_libraries(OpenSRDemo BrowserManager)
 
 target_link_libraries(OpenSRDemo frontend)
 target_link_libraries(OpenSRDemo backend)

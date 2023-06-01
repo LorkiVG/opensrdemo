@@ -5,8 +5,8 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/filesystem.hpp>
-#include "FilePaths.h"
-#include "LOG.h"
+#include "FilePathsManager.h"
+#include "LOGManager.h"
 
 namespace fs = boost::filesystem;
 

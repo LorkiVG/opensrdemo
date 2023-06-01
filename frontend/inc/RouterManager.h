@@ -1,5 +1,5 @@
 #pragma once
-#include "modules/inc/LOG.h"
+#include "modules/inc/LOGManager.h"
 #include "Router.h"
 
 class RouterManager

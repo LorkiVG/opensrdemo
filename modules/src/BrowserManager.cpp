@@ -1,4 +1,4 @@
-#include "Browser.h"
+#include "BrowserManager.h"
 
 void OpenBrowser(const std::string& url) {
     std::string command;

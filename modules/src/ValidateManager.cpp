@@ -1,24 +1,24 @@
-#include "Validator.h"
+#include "ValidateManager.h"
 
-Validator::Validator(const std::string& pattern) {
+ValidateManager::ValidateManager(const std::string& pattern) {
     this->pattern = pattern;
 }
 
-void Validator::SetPattern(const std::string& pattern)
+void ValidateManager::SetPattern(const std::string& pattern)
 {
     this->pattern = pattern;
 }
 
-bool Validator::Match(const std::string& input) const 
+bool ValidateManager::Match(const std::string& input) const 
 {
     return std::regex_match(input, this->pattern);
 }
-bool Validator::PartialMatch(const std::string& input) const 
+bool ValidateManager::PartialMatch(const std::string& input) const 
 {
     return std::regex_search(input, this->pattern);
 }
 
-std::vector<std::string> Validator::GetMatches(std::string& input) const
+std::vector<std::string> ValidateManager::GetMatches(std::string& input) const
 {
     std::smatch match;
     std::vector<std::string> matches;

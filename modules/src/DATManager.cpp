@@ -1,4 +1,4 @@
-#include <DAT.h>
+#include <DATManager.h>
 
 //Инициализация
 void DAT::Init(const DAT& document) 
@@ -128,9 +128,11 @@ void DAT::Representation()
 //Сравнение двух загруженных DAT файлов
 bool DAT::Compare(const DAT& document) const {
     if (document.content == content) return true;
+    else return false;
 };
 bool DAT::Compare(const DAT& document1, const DAT& document2) {
     if (document1.content == document2.content) return true;
+    else return false;
 };
 
 

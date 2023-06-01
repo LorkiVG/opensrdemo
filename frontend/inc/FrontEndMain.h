@@ -2,7 +2,7 @@
 #include <RmlUi/Core.h>
 #include <RmlUi_Backend.h>
 #include <SDL.h>
-#include "modules/inc/ManageSettings.h"
+#include "modules/inc/SettingsManager.h"
 #include "RouterManager.h"
 #include "ContextManager.h"
 

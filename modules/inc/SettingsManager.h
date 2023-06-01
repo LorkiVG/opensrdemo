@@ -4,7 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-#include "FilePaths.h"
+#include "FilePathsManager.h"
 
 
 using namespace std;
@@ -12,7 +12,7 @@ using namespace std;
 namespace fs = boost::filesystem;
 namespace ini_parser = boost::property_tree::ini_parser;
 
-class SettingsFile 
+class SettingsManager
 {
     private:
         void Load();
@@ -20,7 +20,7 @@ class SettingsFile
         boost::property_tree::ptree ptree;
 
     public:
-        SettingsFile(const fs::path& filePath);
+        SettingsManager(const fs::path& filePath);
 
         template<typename generic>
         generic GetProperty(string section, string key, generic defaultvalue)
@@ -44,4 +44,4 @@ class SettingsFile
         void Save() const;
 };
 
-extern SettingsFile* SETTINGS;
+extern SettingsManager* SETTINGS;
