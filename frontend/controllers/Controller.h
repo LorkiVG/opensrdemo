@@ -4,8 +4,11 @@
 #include <iostream>
 #include <boost/regex.hpp>
 #include <boost/algorithm/string/replace.hpp>
-#include "modules/inc/FilePaths.h"
+
 #include "Context.h"
+
+#include "EventListenerInstancer.h"
+#include "EventManager.h"
 
 extern Window* mainWindow;
 extern FormManager* mainFormManager;

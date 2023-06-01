@@ -1,4 +1,5 @@
 #include <RmlUi/Core/EventListenerInstancer.h>
+#include "modules/inc/LOG.h"
 
 class EventListenerInstancer : public Rml::EventListenerInstancer
 {

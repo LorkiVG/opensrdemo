@@ -2,13 +2,15 @@
 
 class EventListener : public Rml::EventListener
 {
-    public:
-        EventListener(const Rml::String& value);
-        virtual ~EventListener();
+public:
+	EventListener(const Rml::String& value);
+	virtual ~EventListener();
 
-        void ProcessEvent(Rml::Event& event) override;
+	/// Посылаем в эвент-менеджер
+	void ProcessEvent(Rml::Event& event) override;
 
-        void OnDetach(Rml::Element* element) override;
+	/// По документации тут надо уничтожать.
+	void OnDetach(Rml::Element* element) override;
 
 private:
 	Rml::String value;

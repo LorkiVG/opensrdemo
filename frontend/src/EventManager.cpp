@@ -45,5 +45,6 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value)
 	{
 		Rml::StringList values;
 		Rml::StringUtilities::ExpandString(values, commands[i], ' ');
+        MAINLOG->WriteStr(value, "\n");
 	}
 }

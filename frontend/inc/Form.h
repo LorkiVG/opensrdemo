@@ -13,7 +13,7 @@ class Form : public View
 
         void SetManager(FormManager* manager);
 
-        void Load(fs::path);
+        void Load(fs::path path);
 
         std::string GetName();
     friend class FormManager;

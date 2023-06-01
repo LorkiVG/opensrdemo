@@ -10,13 +10,14 @@ EventListener::~EventListener()
 {
 }
 
-// Посылаем в эвент-менеджер
+/// @brief Посылаем в эвент-менеджер
+/// @param event Указатель на эвент
 void EventListener::ProcessEvent(Rml::Event& event)
 {
 	EventManager::ProcessEvent(event, value);
 }
 
-// По документации тут надо уничтожать.
+/// По документации тут надо уничтожать.
 void EventListener::OnDetach(Rml::Element* RMLUI_UNUSED_PARAMETER(element))
 {
 	RMLUI_UNUSED(element);

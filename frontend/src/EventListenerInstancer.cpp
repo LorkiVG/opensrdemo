@@ -12,5 +12,6 @@ EventListenerInstancer::~EventListenerInstancer()
 // Создаём новый экземпляр обработчика события
 Rml::EventListener* EventListenerInstancer::InstanceEventListener(const Rml::String& value, Rml::Element* /*element*/)
 {
+    MAINLOG->WriteStr("TEST","\n");
 	return new EventListener(value);
 }

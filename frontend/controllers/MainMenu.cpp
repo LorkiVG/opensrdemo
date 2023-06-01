@@ -11,21 +11,6 @@ class MainMenuControllerEventHandler : public Rml::EventListener
 };
 
 
-MainMenuControllerEventHandlerInstancer::MainMenuControllerEventHandlerInstancer()
-{
-};
-
-MainMenuControllerEventHandlerInstancer::~MainMenuControllerEventHandlerInstancer() {
-
-};
-
-Rml::EventListener* MainMenuControllerEventHandlerInstancer::InstanceEventListener(const Rml::String& value, Rml::Element* element)
-{
-    MAINLOG->WriteStr(value,"\n");
-    return new Rml::EventListener(value);
-};
-
-
 void MainMenuController::Initialize() 
 {
     
@@ -35,8 +20,12 @@ void MainMenuController::Initialize()
     
 	view->Load(fs::path(UIPATH / fs::path("MainMenu.rml")));
     
-    view->Show();
     
+    
+    EventListenerInstancer event_listener_instancer;
+	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
+
+    view->Show();
     Form* form = new Form("settings");
     mainFormManager->Add(form);
 
@@ -44,7 +33,7 @@ void MainMenuController::Initialize()
 
     form->Show();
 
-    Rml::Factory::RegisterEventListenerInstancer(new MainMenuControllerEventHandlerInstancer());
+    
 };
 std::unique_ptr<BaseController> MainMenuControllerFactory::Create() 
 {
