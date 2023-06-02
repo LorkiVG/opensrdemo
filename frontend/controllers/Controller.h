@@ -2,12 +2,13 @@
 #include <string>
 #include <memory>
 #include <boost/regex.hpp>
+#include <boost/asio.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include "ContextManager.h"
 #include "EventListenerInstancer.h"
 #include "EventManager.h"
 
-//TODO Придумать как эти переменные сделать более лучшим способом без использовнаия глобалок
+//TODO Придумать как эти переменные сделать более лучшим способом без использования глобалок
 
 /// @brief Главное окно для всех контроллеров 
 extern Window* mainWindow;

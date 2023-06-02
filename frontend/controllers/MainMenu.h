@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-#include <memory>
 #include "controllers/Controller.h"
 
 class MainMenuControllerEventHandlerInstancer : public Rml::EventListenerInstancer

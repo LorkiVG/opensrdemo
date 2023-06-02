@@ -27,41 +27,25 @@
  */
 
 #include "RmlUi_Backend.h"
-#include "RmlUi_Platform_SDL.h"
-#include "RmlUi_Renderer_SDL.h"
-#include <RmlUi/Core/Context.h>
-#include <RmlUi/Core/Core.h>
-#include <RmlUi/Core/Log.h>
-#include <SDL.h>
+
 
 /**
     Global data used by this backend.
 
     Lifetime governed by the calls to Backend::Initialize() and Backend::Shutdown().
  */
-struct BackendData {
-	BackendData(SDL_Renderer* renderer) : render_interface(renderer) {}
 
-	SystemInterface_SDL system_interface;
-	RenderInterface_SDL render_interface;
 
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
 
-	bool running = true;
-};
-static Rml::UniquePtr<BackendData> data;
-
-bool Backend::Initialize(const char* window_name, int width, int height, bool allow_resize, bool fullscreen)
+bool Backend::Initialize(const char* window_name, int width, int height, bool allow_resize, bool fullscreen, bool windowed)
 {
 	RMLUI_ASSERT(!data);
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return false;
 
-	const Uint32 window_flags = (allow_resize ? SDL_WINDOW_RESIZABLE : 0);
+	const Uint32 window_flags = (allow_resize ? SDL_WINDOW_RESIZABLE : 0) | (!windowed ? SDL_WINDOW_BORDERLESS : 0);
 	SDL_Window* window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, window_flags);
-	
 	if (!window)
 	{
 		Rml::Log::Message(Rml::Log::LT_ERROR, "SDL error on create window: %s\n", SDL_GetError());

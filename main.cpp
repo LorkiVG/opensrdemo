@@ -30,10 +30,6 @@ int main(int argc, char* argv[])
 
     MAINLOG->WriteStr("Файлы ресурсов успешно загружены - Resourses files successfully loaded", "\n");
 
-    
-    
-    // Запускаем поток музыки
-
     // Передаём главный поток во фронтенд
     return FrontendMain();
 }

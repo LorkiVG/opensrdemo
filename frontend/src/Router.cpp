@@ -32,3 +32,5 @@ std::string Router::GetName()
 {
     return this->name;
 }
+
+Router* mainRouter = new Router("main");

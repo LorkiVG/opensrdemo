@@ -36,5 +36,6 @@ class WindowManager
         
         /// @brief Получить имя менеджера окон
         std::string GetName() const;
+        
     friend class Context;
 };

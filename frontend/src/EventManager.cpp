@@ -46,7 +46,7 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value)
         std::vector<std::string> matches = validator->GetMatches(commands[i]);
         if(matches[1] == "OpenForm")
         {
-            router->GetRoute(matches[2])->Initialize();
+            mainRouter->GetRoute(matches[2])->Initialize();
         }
 	}
     delete validator;

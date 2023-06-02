@@ -7,55 +7,63 @@ int FrontendMain()
 	int window_height = SETTINGS->GetProperty<int>("Resolution","GameResolutionY", 768);
     SDL_SetMainReady();
 
-    //!Внимнание в будущем будет перестройка и создание фасада для работы с бекендом(например нужно чтоб удобно запускать на разных мониторах разные окна)
-    bool isbackendinitialized  = Backend::Initialize("OpenSRDemo", window_width, window_height, 1, SETTINGS->GetProperty<bool>("Resolution","Fullscreen", false) );
+    //!Внимнание в будущем будет перестройка и создание фасада для работы с бекендом
+    Backend::Initialize("OpenSRDemo", window_width, window_height, 1, SETTINGS->GetProperty<bool>("Resolution","Fullscreen", false),SETTINGS->GetProperty<bool>("Resolution","Windowed", false));
     Rml::SetSystemInterface(Backend::GetSystemInterface());
 	Rml::SetRenderInterface(Backend::GetRenderInterface());
     Rml::Initialise();
 
 	
-	ContextManager* contextManager = new ContextManager("main");
-	Context* context = new Context("main", window_width, window_height);
-	contextManager->Add(context);
+	mainContextManager = new ContextManager("main");
+	mainContext = new Context("main", window_width, window_height);
+	mainContextManager->Add(mainContext);
 
 	//Добавляем главное окно и менеджер форм в контекст
-	context->AddWindow(mainWindow);
-	context->AddFormManager(mainFormManager);
+	mainContext->AddWindow(mainWindow);
+	mainContext->AddFormManager(mainFormManager);
 
 	//!Внимание задание роутера тут времено для демки 3 июня в будущем планируется переделка
-	router->AddRoute(fs::path("MainMenu.rml"), make_unique<MainMenuControllerFactory>());
-	router->AddRoute(fs::path("Settings.rml"), make_unique<SettingsControllerFactory>());
-
+	mainRouter->AddRoute(fs::path("MainMenu.rml"), make_unique<MainMenuControllerFactory>());
+	mainRouter->AddRoute(fs::path("Preloader.rml"), make_unique<PreloaderControllerFactory>());
+	mainRouter->AddRoute(fs::path("Settings.rml"), make_unique<SettingsControllerFactory>());
 
 	//!Внимание такая инициализация дебагера временна
 	//TODO Переделать и сделать обёртку над дебаггером, и также в будущем избавится от Get так ка это противоречит инкапсуляции
 	//Инициализируеим дебагер
-	Rml::Debugger::Initialise(context->Get());
+	Rml::Debugger::Initialise(mainContext->Get());
 	
+	//!Временно создаём прелоадер тут, планирую перестроить это после первой демки
+	std::unique_ptr<BaseController> basePtr = make_unique<PreloaderControllerFactory>()->Create();
+	PreloaderController* preloaderPtr = dynamic_cast<PreloaderController*>(basePtr.get());
+	if (preloaderPtr != nullptr) {
+		basePtr.release(); 
+		mainPreloader.reset(preloaderPtr);
+		preloaderPtr = nullptr;
+	}
+	mainPreloader->Initialize();
 
 	//!Внимание такой инит шрифта временный в будущем каждый контроллер будет иметь свой FontsManager
 	//TODO Сделать Fonts manager
 	//Загрузка основного шрифта
     Rml::LoadFontFace(fs::path(FONTSPATH / fs::path("boucle.otf")).string());
 	
-	router->GetRoute(fs::path("MainMenu.rml"))->Initialize();
+	mainRouter->GetRoute(fs::path("MainMenu.rml"))->Initialize();
 
     bool running = true;
     while (running)
     {
+		mainContextManager->ProcessEventsAll(&running);
+        mainContextManager->UpdateAll();
 		
-		contextManager->ProcessEventsAll(&running);
-        contextManager->UpdateAll();
-
 		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером 
-		context->UnfocusDocument(mainWindow->GetCurrentView());
+		mainContext->UnfocusDocument(mainWindow->GetCurrentView());
 
 		Backend::BeginFrame();
-		contextManager->RenderAll();
+		mainContextManager->RenderAll();
 		Backend::PresentFrame();
     }
 
-	delete contextManager;
+	delete mainContextManager;
     Rml::Shutdown();
     Backend::Shutdown();
     return 0;

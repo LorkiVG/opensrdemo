@@ -1,7 +1,29 @@
 body {
     width: 100%;
     height: 100%;
+    animation: 1s cubic-in-out alternate showpage;
 }
+
+
+@keyframes showpage
+{
+    0% { opacity:0;}
+    100% { opacity:1;}
+}
+
+body.hide {
+    width: 100%;
+    height: 100%;
+    opacity:0;
+    animation: 1s cubic-in-out alternate showpage;
+}
+
+@keyframes hidepage
+{
+    0% { opacity:1;}
+    100% { opacity:0;}
+}
+
 .main
 {
     width: 100%;
@@ -48,7 +70,7 @@ body {
     border-color: #26242e;
     border-width: 4.3px;
     border-radius: 10px;
-    animation: 1s cubic-in-out alternate showbar;
+    animation: 1.4s cubic-in-out alternate showbar;
 }
 
 @keyframes showbar
@@ -62,8 +84,8 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #2e243b;
-    animation: 2s cubic-in-out alternate load;
+    background-color: #2d2536;
+    animation: 2.6s cubic-in-out alternate load;
 }
 
 
@@ -71,5 +93,6 @@ body {
 @keyframes load
 {
     0% { width: 0%; }
+    15% { width: 0%; }
     100% { width: 100%; }
 }

@@ -20,5 +20,4 @@ class RouterManager
 };
 
 
-extern RouterManager* routerManager;
-extern Router* router;
+extern RouterManager* mainRouterManager;

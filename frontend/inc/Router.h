@@ -21,3 +21,5 @@ class Router {
 
         std::string GetName();
 };
+
+extern Router* mainRouter;

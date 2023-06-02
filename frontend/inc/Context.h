@@ -116,3 +116,5 @@ class Context
         /// @brief Рендер - Render
         void Render();
 };
+
+extern Context* mainContext; 

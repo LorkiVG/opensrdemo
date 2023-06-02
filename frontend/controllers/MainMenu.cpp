@@ -1,5 +1,5 @@
 #include <controllers/MainMenu.h>
-
+#include <controllers/Preloader.h>
 
 void MainMenuController::Initialize() 
 {
@@ -10,10 +10,12 @@ void MainMenuController::Initialize()
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
 	view->Load(fs::path(UIPATH / fs::path("MainMenu.rml")));    
-
-    view->Show();
+    mainPreloader->Show();
+    view->Show(Rml::ModalFlag::None, Rml::FocusFlag::None);
+    mainPreloader->PreHide();
 };
 std::unique_ptr<BaseController> MainMenuControllerFactory::Create() 
 {
     return std::make_unique<MainMenuController>();
 };
+

@@ -70,11 +70,19 @@ void View::Load(fs::path path)
         }
     }
 }
+
 void View::Show(Rml::ModalFlag modalFlag, Rml::FocusFlag focusFlag)
 {
     this->view->Show(modalFlag, focusFlag);
 }
+
+void View::Hide()
+{
+    this->view->Hide();
+}
+
 void View::Close()
 {
     this->view->Close();
 }
+

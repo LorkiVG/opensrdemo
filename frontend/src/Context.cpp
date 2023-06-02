@@ -303,3 +303,5 @@ void Context::Render()
 {
     this->context->Render();
 }
+
+Context* mainContext;

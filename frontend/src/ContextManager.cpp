@@ -72,3 +72,5 @@ void ContextManager::RenderAll()
         context->second->Render();
     }
 }
+
+ContextManager* mainContextManager; 

@@ -34,6 +34,14 @@
 #include <RmlUi/Core/SystemInterface.h>
 #include <RmlUi/Core/Types.h>
 
+//TODO!ВРЕМЕННО ДЛЯ ДЕМКИ ДАЁМ ПРЯМОЙ ДОСТУП К SDL ОКНУ ПОТОМ ПРИДУМАТЬ ЧТО-ТО НОРМАЛЬНОЕ
+#include "RmlUi_Platform_SDL.h"
+#include "RmlUi_Renderer_SDL.h"
+#include <RmlUi/Core/Context.h>
+#include <RmlUi/Core/Core.h>
+#include <RmlUi/Core/Log.h>
+#include <SDL.h>
+
 using KeyDownCallback = bool (*)(Rml::Context* context, Rml::Input::KeyIdentifier key, int key_modifier, float native_dp_ratio, bool priority);
 
 /**
@@ -46,8 +54,23 @@ using KeyDownCallback = bool (*)(Rml::Context* context, Rml::Input::KeyIdentifie
  */
 namespace Backend {
 
+
+//TODO!ВРЕМЕННО ДЛЯ ДЕМКИ ДАЁМ ПРЯМОЙ ДОСТУП К SDL ОКНУ ПОТОМ ПРИДУМАТЬ ЧТО-ТО НОРМАЛЬНОЕ
+struct BackendData {
+	BackendData(SDL_Renderer* renderer) : render_interface(renderer) {}
+
+	SystemInterface_SDL system_interface;
+	RenderInterface_SDL render_interface;
+
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer = nullptr;
+
+	bool running = true;
+};
+
+static Rml::UniquePtr<BackendData> data;
 // Initializes the backend, including the custom system and render interfaces, and opens a window for rendering the RmlUi context.
-bool Initialize(const char* window_name, int width, int height, bool allow_resize, bool fullscreen);
+bool Initialize(const char* window_name, int width, int height, bool allow_resize, bool fullscreen, bool windowed);
 // Closes the window and release all resources owned by the backend, including the system and render interfaces.
 void Shutdown();
 

@@ -47,14 +47,16 @@ class View
         /// @param path Путь к файлу документа
         void Load(fs::path path);
 
-        /// @brief Закрыть текущий вид(но так как задумывается что View просто расширяет Rml:::ElementDocument то лучше использовать Window, а не закрывать текущйи документ во View и открывать новый )
-        void Close();
-
         /// @brief Показать вид
         /// @param modalFlag Флаг модального окна
         /// @param focusFlag Флаг фокуса
         void Show(Rml::ModalFlag modalFlag = Rml::ModalFlag::None, Rml::FocusFlag focusFlag = Rml::FocusFlag::Auto);
 
+        /// @brief Скрыть вид
+        void Hide();
+
+        /// @brief Закрыть текущий вид(но так как задумывается что View просто расширяет Rml:::ElementDocument то лучше использовать Window, а не закрывать текущйи документ во View и открывать новый )
+        void Close();
         
     friend class Window;
     friend class Context;

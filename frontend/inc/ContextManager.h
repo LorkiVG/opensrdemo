@@ -35,3 +35,5 @@ class ContextManager
         /// @brief Рендеринг всех контекстов
         void RenderAll();
 };
+
+extern ContextManager* mainContextManager; 

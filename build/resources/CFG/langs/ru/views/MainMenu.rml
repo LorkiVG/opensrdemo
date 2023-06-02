@@ -7,7 +7,7 @@
     <body>
         <div class="main">
             <div class="header">
-                <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" /></img>
+                <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" />
                 <ul class="header_menu">
                     <li onclick="OpenWindow(SpaceDemo.rml)">Новая игра</li>
                     <li onclick="OpenForm(Load.rml)">Загрузить</li>
@@ -18,8 +18,8 @@
                 </ul>
             </div>
             <div class="footer">
-                <img onclick="OpenBrowser(vertix.games)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" /></img>
-                <img onclick="OpenBrowser(snk-games.net)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/></img>
+                <img onclick="OpenBrowser(vertix.games)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img onclick="OpenBrowser(snk-games.net)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
             </div>
         </div>
     </body>

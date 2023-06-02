@@ -9,12 +9,11 @@
             
             <div class="loader">
                 <div class="loader_container">
-                    <img class="loader_logo" src="{DATAPATH}/main/logo/opensr.png"></img>
+                    <img class="loader_logo" src="{DATAPATH}/main/logo/opensr.png"/>
                     <div class="loader_bar">
                         <div class="loader_bar_strip"></div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </body>
