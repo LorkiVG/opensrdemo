@@ -1,6 +1,6 @@
 #include "View.h"
 #include "Window.h"
-#include "Context.h"
+#include "ContextManager.h"
 
 View::View(const std::string& name)
 {
@@ -25,6 +25,10 @@ Context* View::GetContext()
     return this->window->GetContext();
 }
 
+Rml::Element* View::GetElementById(const std::string& id)
+{
+    return this->view->GetElementById(id);
+}
 
 void View::GetElementsByTagName(Rml::ElementList& elements, const std::string& tag)
 {

@@ -2,35 +2,36 @@
 
 void PreloaderController::Initialize() 
 {
+    preloaderWindow = new Window("preloader");
+    mainContext->AddWindow(preloaderWindow);
     View* view = new View("preloader");
     preloaderWindow->SetCurrentView(view);
     view->Load(fs::path(UIPATH / fs::path("Preloader.rml")));
-    view->Hide();
+    this->preloaderBarStrip = view->GetElementById("preloaderBarStrip");
 };
 
 void PreloaderController::Show()
 {
-    preloaderWindow->GetCurrentView()->Show();
+    this->preloaderWindow->GetCurrentView()->Show();
 }
 
-void PreloaderController::UpdatePreloader()
+void PreloaderController::UpdatePreloader(int percent)
 {
-    
+    this->preloaderBarStrip->SetProperty("transition", "width 1s");
+    this->preloaderBarStrip->SetProperty("width", to_string(percent) + "%");
 }
 
-void PreloaderController::PreHide()
-{
-    Rml::ElementList body;
-    preloaderWindow->GetCurrentView()->GetElementsByTagName(body, "body");
-    body[0]->SetClass("hide", 1);
-    boost::asio::io_context io;
-    boost::asio::deadline_timer t(io, boost::posix_time::milliseconds(1800));
-    t.async_wait(&Hide);
-    io.run();
-}
+
 
 void PreloaderController::Hide()
 {
+    MAINLOG->WriteStr("ADDED");
+    Rml::Element* body = preloaderWindow->GetCurrentView()->GetElementById("preloader");
+    body->SetClass("hide", 1);
+
+    MAINLOG->WriteStr("ADDED ++++");
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
     preloaderWindow->GetCurrentView()->Hide();
 }
 

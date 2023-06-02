@@ -57,7 +57,7 @@ int FrontendMain()
 		
 		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером 
 		mainContext->UnfocusDocument(mainWindow->GetCurrentView());
-
+		
 		Backend::BeginFrame();
 		mainContextManager->RenderAll();
 		Backend::PresentFrame();

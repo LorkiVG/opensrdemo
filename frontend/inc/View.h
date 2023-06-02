@@ -33,6 +33,10 @@ class View
         /// @param listener Объект прослушивателя событий
         void AddEventListener(const Rml::String& event, Rml::EventListener* listener, bool in_capture_phase = false);
         
+        /// @brief Получить элемент по id
+        /// @param Сам id
+        /// @return Указатель на получаемый элемент
+        Rml::Element* GetElementById(const std::string& id);
         /// @brief Получить элементы по имени тега
         /// @param event Указатель на список куда будут сохранены элементы
         /// @param tag Имя тега
@@ -57,7 +61,7 @@ class View
 
         /// @brief Закрыть текущий вид(но так как задумывается что View просто расширяет Rml:::ElementDocument то лучше использовать Window, а не закрывать текущйи документ во View и открывать новый )
         void Close();
-        
+
     friend class Window;
     friend class Context;
 };

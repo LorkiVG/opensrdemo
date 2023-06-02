@@ -31,7 +31,7 @@ set(Boost_USE_RELEASE_LIBS ON)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
 
-find_package(Boost REQUIRED COMPONENTS filesystem system regex)
+find_package(Boost REQUIRED COMPONENTS thread date_time timer filesystem system regex)
 
 if(NOT Boost_FOUND)
     message(FATAL_ERROR " Не найдена библиотека Boost - Cannot find Boost library")
@@ -72,6 +72,10 @@ else()
 endif()
 target_link_libraries(OpenSRDemo ${Boost_LIBRARIES})
 link_libraries(${Boost_LIBRARIES})
+
+if(WIN32)
+    target_link_libraries(OpenSRDemo ws2_32)
+endif()
 
 #Добавление библиотек фронтенда и бекенда в исполняемый файл - Adding libraries frontend and backend to the executable file
 target_link_libraries(OpenSRDemo FilePathsManager)

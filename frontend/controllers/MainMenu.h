@@ -1,6 +1,7 @@
 #pragma once
 #include "controllers/Controller.h"
 
+
 class MainMenuControllerEventHandlerInstancer : public Rml::EventListenerInstancer
 {
 public:
@@ -14,8 +15,9 @@ public:
 class MainMenuController : public BaseController {
     private:
         Rml::ElementDocument* window;
-        
+        std::thread loadingThread;
     public:
+        void LoadResources();
         void Initialize() override;
 };
 

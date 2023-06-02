@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <thread>
+#include <chrono>
 #include <boost/regex.hpp>
 #include <boost/asio.hpp>
 #include <boost/algorithm/string/replace.hpp>

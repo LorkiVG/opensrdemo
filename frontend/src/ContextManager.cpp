@@ -73,4 +73,5 @@ void ContextManager::RenderAll()
     }
 }
 
+std::mutex contextManagerMutex;
 ContextManager* mainContextManager; 

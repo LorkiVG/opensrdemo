@@ -36,4 +36,6 @@ class ContextManager
         void RenderAll();
 };
 
+
+extern std::mutex contextManagerMutex;
 extern ContextManager* mainContextManager; 

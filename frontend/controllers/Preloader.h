@@ -6,11 +6,13 @@
 class PreloaderController : public BaseController {
     private:
         Window* preloaderWindow;
+        Rml::Element* preloaderBarStrip;
+        //!Внимание такое объявление временно 
+        std::thread timerHideThread; 
     public:
         void Initialize() override;
         void Show();
-        void UpdatePreloader();
-        void PreHide();
+        void UpdatePreloader(int percent);
         void Hide();
 };
 
