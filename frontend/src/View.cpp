@@ -51,6 +51,10 @@ void View::PushToBack()
     this->view->PushToBack();
 }
 
+bool View::SetProperty(Rml::PropertyId id, const Rml::Property& property)
+{
+    this->view->SetProperty(id, property);
+}
 
 void View::Load(fs::path path)
 {

@@ -25,7 +25,7 @@ class Context
         std::map<std::string, FormManager*> formManagers;
 
     public:
-        Context(std::string name, int width, int height, KeyDownCallback keyDownCallback = nullptr, bool powerSave = true);
+        Context(std::string name, int width, int height, KeyDownCallback keyDownCallback = nullptr, bool powerSave = false);
         ~Context();
         //! Внимание данный метод временный для дебаггера
         Rml::Context *Get() const;

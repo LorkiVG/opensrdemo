@@ -14,6 +14,7 @@ class View
     private:
         Window* window;
         void SetWindow(Window* window);
+        
     protected:
         Rml::ElementDocument* view;
     public:
@@ -42,6 +43,8 @@ class View
         /// @param tag Имя тега
         void GetElementsByTagName(Rml::ElementList& elements, const std::string& tag);
 
+        bool SetProperty(Rml::PropertyId id, const Rml::Property& property);
+
         /// @brief Поднять вид выше всех других в отображении
         void PullToFront();
         /// @brief Опустить вид ниже всех других в отображении
@@ -55,10 +58,12 @@ class View
         /// @param modalFlag Флаг модального окна
         /// @param focusFlag Флаг фокуса
         void Show(Rml::ModalFlag modalFlag = Rml::ModalFlag::None, Rml::FocusFlag focusFlag = Rml::FocusFlag::Auto);
+        void ShowHidden(Rml::ModalFlag modalFlag = Rml::ModalFlag::None, Rml::FocusFlag focusFlag = Rml::FocusFlag::Auto);
+
 
         /// @brief Скрыть вид
         void Hide();
-
+        
         /// @brief Закрыть текущий вид(но так как задумывается что View просто расширяет Rml:::ElementDocument то лучше использовать Window, а не закрывать текущйи документ во View и открывать новый )
         void Close();
 

@@ -4,7 +4,7 @@
         <link type="text/rcss" href="../styles/MainMenu.rcss"/>   
     </head>
 
-    <body>
+    <body id="body">
         <div class="main">
             <div class="header">
                 <img class="header_logo" src="{DATAPATH}/main/logo/opensr.png" />
@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div class="footer">
-                <img onclick="OpenBrowser(vertix.games)" class="footer_logoopensr" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
+                <img onclick="OpenBrowser(vertix.games)" class="footer_logovertixgames" src="{DATAPATH}/main/logo/companies/opensrcompany.png" />
                 <img onclick="OpenBrowser(snk-games.net)" class="footer_logosnk" src="{DATAPATH}/main/logo/companies/snkcompany.png"/>
             </div>
         </div>

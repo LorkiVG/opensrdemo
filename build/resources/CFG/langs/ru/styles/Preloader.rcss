@@ -2,6 +2,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: #0c0b0e;
+    z-index: 10;
 }
 
 @keyframes hidepage
@@ -14,9 +15,9 @@ body {
     }
 }
 
-body.hide {
-    opacity: 0;
-    animation: 1s cubic-in-out alternate hidepage;
+body.hide
+{
+    animation: 1.5s cubic-in-out alternate hidepage;
 }
 
 
@@ -30,6 +31,7 @@ body.hide {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
 }
 .loader 
 {
@@ -41,6 +43,7 @@ body.hide {
     width: 80%;
     animation: 1s cubic-in-out alternate showlogo;
 }
+
 @keyframes showlogo
 {
     0% { 

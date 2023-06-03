@@ -11,6 +11,9 @@ class PreloaderController : public BaseController {
         std::thread timerHideThread; 
     public:
         void Initialize() override;
+
+        Window* GetPreloaderWindow();
+
         void Show();
         void UpdatePreloader(int percent);
         void Hide();

@@ -128,33 +128,33 @@ bool Backend::ProcessEvents(Rml::Context* context, KeyDownCallback key_down_call
 	{
 		switch (ev.type)
 		{
-		case SDL_QUIT:
-		{
-			result = false;
-		}
-		break;
-		case SDL_KEYDOWN:
-		{
-			const Rml::Input::KeyIdentifier key = RmlSDL::ConvertKey(ev.key.keysym.sym);
-			const int key_modifier = RmlSDL::GetKeyModifierState();
-			const float native_dp_ratio = 1.f;
+			case SDL_QUIT:
+			{
+				result = false;
+			}
+			break;
+			case SDL_KEYDOWN:
+			{
+				const Rml::Input::KeyIdentifier key = RmlSDL::ConvertKey(ev.key.keysym.sym);
+				const int key_modifier = RmlSDL::GetKeyModifierState();
+				const float native_dp_ratio = 1.f;
 
-			// See if we have any global shortcuts that take priority over the context.
-			if (key_down_callback && !key_down_callback(context, key, key_modifier, native_dp_ratio, true))
-				break;
-			// Otherwise, hand the event over to the context by calling the input handler as normal.
-			if (!RmlSDL::InputEventHandler(context, ev))
-				break;
-			// The key was not consumed by the context either, try keyboard shortcuts of lower priority.
-			if (key_down_callback && !key_down_callback(context, key, key_modifier, native_dp_ratio, false))
-				break;
-		}
-		break;
-		default:
-		{
-			RmlSDL::InputEventHandler(context, ev);
-		}
-		break;
+				// See if we have any global shortcuts that take priority over the context.
+				if (key_down_callback && !key_down_callback(context, key, key_modifier, native_dp_ratio, true))
+					break;
+				// Otherwise, hand the event over to the context by calling the input handler as normal.
+				if (!RmlSDL::InputEventHandler(context, ev))
+					break;
+				// The key was not consumed by the context either, try keyboard shortcuts of lower priority.
+				if (key_down_callback && !key_down_callback(context, key, key_modifier, native_dp_ratio, false))
+					break;
+			}
+			break;
+			default:
+			{
+				RmlSDL::InputEventHandler(context, ev);
+			}
+			break;
 		}
 		has_event = SDL_PollEvent(&ev);
 	}

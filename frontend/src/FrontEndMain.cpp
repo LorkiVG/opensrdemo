@@ -56,6 +56,7 @@ int FrontendMain()
         mainContextManager->UpdateAll();
 		
 		//TODO! Пофиксить этот лютый временный костыль с дефокусирвокой главного окна перед рендером 
+		mainWindow->GetCurrentView()->PushToBack();
 		mainContext->UnfocusDocument(mainWindow->GetCurrentView());
 		
 		Backend::BeginFrame();

@@ -3,13 +3,9 @@
 
 
 void MainMenuController::LoadResources()
-{
-    std::lock_guard<std::mutex> lock(contextManagerMutex);
-    
-    //Дополнительная "видимость" загрузки ресурсов, нужно чтоб предлоадер был показан хотяб пару секунд
-    mainWindow->GetCurrentView()->Show(Rml::ModalFlag::None, Rml::FocusFlag::None);
-    mainPreloader->UpdatePreloader(40);
+{   
     std::this_thread::sleep_for(std::chrono::seconds(1));
+    mainWindow->GetCurrentView()->Show(Rml::ModalFlag::None, Rml::FocusFlag::None);
     mainPreloader->UpdatePreloader(70);
     std::this_thread::sleep_for(std::chrono::seconds(1));
     mainPreloader->UpdatePreloader(100);
@@ -31,9 +27,10 @@ void MainMenuController::Initialize()
     View* view = new View("mainmenu");
 	mainWindow->SetCurrentView(view);
     view->Load(fs::path(UIPATH / fs::path("MainMenu.rml")));  
-    
+    mainWindow->GetCurrentView()->PushToBack();
+    view->Hide();
 
-    mainPreloader->UpdatePreloader(20);
+    mainPreloader->UpdatePreloader(30);
 
     //Для оптимизации запускаем загрузку ресурсов в отдельном потоке
 	loadingThread = std::thread(&LoadResources, this);

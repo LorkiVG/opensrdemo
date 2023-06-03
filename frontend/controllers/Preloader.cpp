@@ -10,9 +10,14 @@ void PreloaderController::Initialize()
     this->preloaderBarStrip = view->GetElementById("preloaderBarStrip");
 };
 
+Window* PreloaderController::GetPreloaderWindow()
+{
+    return this->preloaderWindow;
+}
+
 void PreloaderController::Show()
 {
-    this->preloaderWindow->GetCurrentView()->Show();
+    this->preloaderWindow->GetCurrentView()->Show(Rml::ModalFlag::Modal, Rml::FocusFlag::Auto);
 }
 
 void PreloaderController::UpdatePreloader(int percent)
@@ -25,12 +30,10 @@ void PreloaderController::UpdatePreloader(int percent)
 
 void PreloaderController::Hide()
 {
-    MAINLOG->WriteStr("ADDED");
     Rml::Element* body = preloaderWindow->GetCurrentView()->GetElementById("preloader");
     body->SetClass("hide", 1);
 
-    MAINLOG->WriteStr("ADDED ++++");
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 
     preloaderWindow->GetCurrentView()->Hide();
 }
